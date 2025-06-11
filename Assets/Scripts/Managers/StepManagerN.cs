@@ -184,8 +184,10 @@ namespace Assets.Scripts.Managers
             {
                 // Update text
                 returnButton.interactable = true;
-                confirmNextButton.interactable = true;
-                confirmeNextText.text = "Confirmer";
+                
+                //confirmNextButton.gameObject.SetActive(false);
+                confirmNextButton.interactable = false;
+                confirmeNextText.text = "Suivant";
             }            
             if ( interactionState == InteractionState.ISCORRECTION)
             {
@@ -203,8 +205,9 @@ namespace Assets.Scripts.Managers
                 if (isValid)
                 {
                     confirmeNextText.text = "Suivant";
-                    confirmNextButton.interactable = true;
                     returnButton.interactable = false;
+                    confirmNextButton.interactable = true;
+                    confirmNextButton.gameObject.SetActive(true);
                 }
                 else
                 {
@@ -264,6 +267,8 @@ namespace Assets.Scripts.Managers
 
         private void BackToQuestion()
         {
+            confirmNextButton.interactable = true;
+
             if (interactionState == InteractionState.ISCORRECTION)
             {
                 ClearAllDisplay();
@@ -276,6 +281,8 @@ namespace Assets.Scripts.Managers
 
         private void BackToDocument()
         {
+            confirmNextButton.gameObject.SetActive(true);
+
             if (interactionState == InteractionState.ISANSWERING)
             {
                 ClearAllDisplay();
