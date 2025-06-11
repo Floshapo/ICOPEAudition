@@ -176,16 +176,16 @@ namespace Assets.Scripts.Managers
                
             if (interactionState == InteractionState.ISREADING)
             {
-                // update text
+                // update buttons and text
                 returnButton.interactable = false;
+                confirmNextButton.interactable = true;
                 confirmeNextText.text = "Répondre";
             }
             if (interactionState == InteractionState.ISANSWERING)
             {
-                // Update text
+                // Update button and text
                 returnButton.interactable = true;
                 
-                //confirmNextButton.gameObject.SetActive(false);
                 confirmNextButton.interactable = false;
                 confirmeNextText.text = "Suivant";
             }            
@@ -267,8 +267,6 @@ namespace Assets.Scripts.Managers
 
         private void BackToQuestion()
         {
-            confirmNextButton.interactable = true;
-
             if (interactionState == InteractionState.ISCORRECTION)
             {
                 ClearAllDisplay();
@@ -281,8 +279,6 @@ namespace Assets.Scripts.Managers
 
         private void BackToDocument()
         {
-            confirmNextButton.gameObject.SetActive(true);
-
             if (interactionState == InteractionState.ISANSWERING)
             {
                 ClearAllDisplay();
@@ -315,42 +311,31 @@ namespace Assets.Scripts.Managers
 
         private void OnAnswerCorrect(PhaseData phaseData, int index)
         {
-            string feedBackText = "Mauvaise réponse !";
             bool isCorrect = false;
             bool isDiagnosticAnswer = false;
             bool isActionAnswer = false;
-            // DIAGNOSTIC CHOICE
-            if (answerState == AnswerState.DIAGNOSTIC)
+
+            bool isCorrectAnswer = IsAnswerCorrect(phaseData.answerData, index);
+            isCorrect = isCorrectAnswer;
+            string feedBackText = isCorrectAnswer ? "Bonne réponse !" : "Mauvaise réponse !";
+
+            if (!isCorrectAnswer)
             {
-                if (IsAnswerCorrect(phaseData.answerData, index))
-                {
-                    _isDiagnosticValid = true;
-                    isCorrect = true;
-                    feedBackText = "Bonne réponse";
-                }
-                else
-                {
-                    choiceButtons[index].GetComponent<AnswerButton>().SetIncorrect();
-                    _isDiagnosticValid = false;
-                }
-                isDiagnosticAnswer = true;
+                choiceButtons[index].GetComponent<AnswerButton>().SetIncorrect();
             }
-            // ACTION CHOICE
-            if (answerState == AnswerState.ACTION)
+
+            switch (answerState)
             {
-                if (IsAnswerCorrect(phaseData.answerData, index))
-                {
-                    _isActionValid = true;
-                    isCorrect = true;
-                    feedBackText = "Bonne réponse";
-                }
-                else
-                {
-                    _isActionValid = false;
-                    choiceButtons[index].GetComponent<AnswerButton>().SetIncorrect();
-                }
-                isActionAnswer = true;
+                case AnswerState.DIAGNOSTIC:
+                    _isDiagnosticValid = isCorrectAnswer;
+                    isDiagnosticAnswer = true;
+                    break;
+                case AnswerState.ACTION:
+                    _isActionValid = isCorrectAnswer;
+                    isActionAnswer = true;
+                    break;
             }
+
             GameManager.Instance.GameData.RecordsSteps(step, isDiagnosticAnswer, isActionAnswer, choiceButtons[index].GetComponentInChildren<TextMeshProUGUI>().text);
             ShowAnswerDetail(phaseData.answerData[index], feedBackText, isCorrect);
         }
