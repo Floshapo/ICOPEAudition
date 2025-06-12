@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using static Assets.Scripts.Managers.GameStateManager;
 using Assets.Scripts.PatientData.AlgoData;
-using Assets.Scripts.UI;
+using Assets.Scripts.UI.ScoreContents;
 
 namespace Assets.Scripts.Managers
 {
@@ -93,6 +93,9 @@ namespace Assets.Scripts.Managers
 
         [Header("Character pluse")]
         [SerializeField] private GameObject _elderPerson; // maybe change to list
+
+        [Header("Scrpits")]
+        [SerializeField] private PlayerScoreDisplayManager folderDivider;
         #endregion
 
         #region Private variables
@@ -120,8 +123,8 @@ namespace Assets.Scripts.Managers
         internal void LoadScore(string patientName)
         {
             ClearScreen();
-            var go = _scorePanel.GetComponent<PatientScoreManager>();
-            go.GetSetDisplayScore(patientName);
+            folderDivider.GetSetDisplayScore(patientName);
+            //go.GetSetDisplayScore(patientName
             _scorePanel.SetActive(true);
         }
 

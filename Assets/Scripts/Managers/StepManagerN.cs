@@ -335,6 +335,7 @@ namespace Assets.Scripts.Managers
                     isActionAnswer = true;
                     break;
             }
+            Debug.Log("Saving step...");
 
             GameManager.Instance.GameData.RecordsSteps(step, isDiagnosticAnswer, isActionAnswer, choiceButtons[index].GetComponentInChildren<TextMeshProUGUI>().text);
             ShowAnswerDetail(phaseData.answerData[index], feedBackText, isCorrect);

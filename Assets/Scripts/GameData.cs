@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml;
+using Unity.PlasticSCM.Editor.WebApi;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -55,7 +56,7 @@ namespace Assets.Scripts
             public float successRate => (numberStepSucceed + numberStepFailed) == 0 ? 0f : (float)numberStepSucceed * 100 / ((float)numberStepSucceed + (float)numberStepFailed);
             
             public float timePassed { get; set; } // Time spent on the level
-            public Dictionary<Step, StepRecords> stepRecords { get; set; } // StepRecords of the level {Step name, Steps}
+            public Dictionary<string, StepRecords> stepRecords; // StepRecords of the level {Step name, Steps}
         }
 
         public struct LevelRecords
@@ -109,11 +110,11 @@ namespace Assets.Scripts
         }
 
         // RECORDS VARIABLES
-        private Dictionary<Step, StepRecords> _stepRecords { get; set; }
-        private Dictionary<string, PatientCaseRecords> _patientCaseRecords { get; set; }
-        private Dictionary<LevelState, LevelRecords> _levelRecords {  get; set; }
-
+        private Dictionary<string, StepRecords> _stepRecords;
+        private Dictionary<string, PatientCaseRecords> _patientCaseRecords;
+        private Dictionary<LevelState, LevelRecords> _levelRecords;
         private MainData _MainData;
+        private string _currentKey;
         
         // TIMER VARIABLES
         private TimerData _levelTimer;
@@ -131,7 +132,7 @@ namespace Assets.Scripts
                 _levelRecords = new Dictionary<LevelState, LevelRecords>();
             }
             _patientCaseRecords = new Dictionary<string, PatientCaseRecords>();
-            _stepRecords = new Dictionary<Step, StepRecords>();
+            _stepRecords = new Dictionary<string, StepRecords>();
         }
 
         /// <summary>
@@ -140,7 +141,8 @@ namespace Assets.Scripts
         /// <param name="algoStep"></param>
         public void SetStepRecords(Step algoStep)
         {
-            _stepRecords[algoStep] = new StepRecords(0, 0, new List<string>(), new List<string>());
+            _currentKey = GetUniqueKeyStep(_stepRecords, algoStep.ToString());
+            _stepRecords[_currentKey] = new StepRecords(0, 0, new List<string>(), new List<string>());
         }
 
         /// <summary>
@@ -152,9 +154,11 @@ namespace Assets.Scripts
         /// <param name="diagnostic"></param>
         public void RecordsSteps(Step algoStep, bool isDiagnotics, bool isAction, string answer)
         {
-            if (!_stepRecords.ContainsKey(algoStep)) return;
 
-            StepRecords stepData = _stepRecords[algoStep];
+            // Key : Questionnaire_0 | (string)algoStep+'_'+0 (int)
+            if (!_stepRecords.ContainsKey(_currentKey)) return;
+            
+            StepRecords stepData = _stepRecords[_currentKey];
             
             if (isDiagnotics)
             {
@@ -173,7 +177,19 @@ namespace Assets.Scripts
             else if (stepData.actionAttempt == 1 && stepData.diagnoticsAttempt == 0) stepData.succeeded = true;
             else stepData.succeeded = false;
 
-            _stepRecords[algoStep] = stepData;
+            _stepRecords[_currentKey] = stepData;
+        }
+
+        private static string GetUniqueKeyStep(Dictionary<string, StepRecords> dict, string baseName)
+        {
+            int index = 0;
+            string key = "";
+            do
+            {
+                key = baseName + "_" + index;
+                index++;
+            } while (dict.ContainsKey(key));
+            return key;
         }
         
         public void SetPatientCaseRecorder(string patientName)
@@ -217,6 +233,8 @@ namespace Assets.Scripts
 
             patientCaseRecords.timePassed = Time.time - _levelTimer.startTime;
             patientCaseRecords.stepRecords = _stepRecords;
+
+            Debug.Log("PLOP");
 
             _patientCaseRecords[patientName] = patientCaseRecords;
         }
@@ -284,15 +302,18 @@ namespace Assets.Scripts
         public Dictionary<string, string[]> GetStepRecordsToString(int indexStep)
         {
             Step step = (Step)indexStep;
+            
+            string key = GetUniqueKeyStep(_stepRecords, step.ToString()); // TODO : Fix this shit 
+
             Dictionary<string, string[]> stringRecords = new Dictionary<string, string[]>();
             
             string[] dataStep = new string[4];
-            dataStep[0] = _stepRecords[step].diagnoticsAttempt.ToString();
-            dataStep[1] = _stepRecords[step].actionAttempt.ToString();
-            dataStep[2] = _stepRecords[step].actionAnswer.AsEnumerable<string>().Last();
-            dataStep[3] = _stepRecords[step].diagnosticAnswer.AsEnumerable<string>().Last();
-            dataStep[4] = _stepRecords[step].succeeded ? "No error" : "Error";
-            stringRecords.Add(_stepRecords[step].ToString(), dataStep);
+            dataStep[0] = _stepRecords[key].diagnoticsAttempt.ToString();
+            dataStep[1] = _stepRecords[key].actionAttempt.ToString();
+            dataStep[2] = _stepRecords[key].actionAnswer.AsEnumerable<string>().Last();
+            dataStep[3] = _stepRecords[key].diagnosticAnswer.AsEnumerable<string>().Last();
+            dataStep[4] = _stepRecords[key].succeeded ? "No error" : "Error";
+            stringRecords.Add(_stepRecords[key].ToString(), dataStep);
 
             return stringRecords;
         }

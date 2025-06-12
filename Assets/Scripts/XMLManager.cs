@@ -235,9 +235,9 @@ namespace Assets.Scripts
         /// </summary>
         /// <param name="node"></param>
         /// <returns></returns>
-        private static Dictionary<Step, StepRecords> LoadStepRecords(XmlNode node)
+        private static Dictionary<string, StepRecords> LoadStepRecords(XmlNode node)
         {
-            Dictionary<Step, StepRecords> stepRecords = new Dictionary<Step, StepRecords>();
+            Dictionary<string, StepRecords> stepRecords = new Dictionary<string, StepRecords>();
             foreach (XmlNode stepNode in node.ChildNodes)
             {
                 StepRecords step = new StepRecords
@@ -247,8 +247,7 @@ namespace Assets.Scripts
                     actionAnswer = LoadStringList(stepNode.SelectSingleNode("actionAnswer")),
                     diagnosticAnswer = LoadStringList(stepNode.SelectSingleNode("diagnosticAnswer"))
                 };
-                Step algoState = (Step)Enum.Parse(typeof(Step), stepNode.Name);
-                stepRecords[algoState] = step;
+                stepRecords[stepNode.Name] = step;
             }
             return stepRecords;
         }
