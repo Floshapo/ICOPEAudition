@@ -1784,8 +1784,6 @@ GameObject:
   m_Component:
   - component: {fileID: 730478440}
   - component: {fileID: 730478442}
-  - component: {fileID: 730478441}
-  - component: {fileID: 730478443}
   - component: {fileID: 730478444}
   - component: {fileID: 730478446}
   - component: {fileID: 730478447}
@@ -1815,18 +1813,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &730478441
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 730478439}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 576009da43d62df46ab1345913ed48ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &730478442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1855,36 +1841,6 @@ MonoBehaviour:
   _tutorialPanel: {fileID: 874842750}
   _elderPerson: {fileID: 1276246248}
   folderDivider: {fileID: 655420377}
---- !u!114 &730478443
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 730478439}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1267656ab13147c4d9a75e39b7698eb4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _documentContentParent: {fileID: 0}
-  _diagButtons:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  _actionButtons:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  _diagButtonGroup: {fileID: 0}
-  _actionButtonGroup: {fileID: 0}
-  _confirmButton: {fileID: 0}
-  _nextButton: {fileID: 0}
-  _moneyAnsweredCorrectly: 10
-  _moneyBonusFirstTry: 20
-  _moneyPatientFinished: 50
 --- !u!114 &730478444
 MonoBehaviour:
   m_ObjectHideFlags: 0

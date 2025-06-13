@@ -216,16 +216,16 @@ namespace Assets.Scripts
 
                 if (stepData.succeeded) patientCaseRecords.numberStepSucceed++;
                 else patientCaseRecords.numberStepFailed++;
-
-                patientCaseRecords.totDiagnosticCorrect += patientCaseRecords.numberDiagCorrect;
-                patientCaseRecords.totDiagnosticError += patientCaseRecords.numberDiagIncorrect;
-
-                patientCaseRecords.totActionCorrect += patientCaseRecords.numberActionCorrect;
-                patientCaseRecords.totActionError += patientCaseRecords.numberActionIncorrect;
-
-                patientCaseRecords.totStepSucceed += patientCaseRecords.numberStepSucceed;
-                patientCaseRecords.totStepFailed += patientCaseRecords.numberStepFailed;
             }
+
+            patientCaseRecords.totDiagnosticCorrect += patientCaseRecords.numberDiagCorrect;
+            patientCaseRecords.totDiagnosticError += patientCaseRecords.numberDiagIncorrect;
+
+            patientCaseRecords.totActionCorrect += patientCaseRecords.numberActionCorrect;
+            patientCaseRecords.totActionError += patientCaseRecords.numberActionIncorrect;
+
+            patientCaseRecords.totStepSucceed += patientCaseRecords.numberStepSucceed;
+            patientCaseRecords.totStepFailed += patientCaseRecords.numberStepFailed;
 
             patientCaseRecords.timePassed = Time.time - _levelTimer.startTime;
             patientCaseRecords.stepRecords = _stepRecords;
@@ -394,8 +394,8 @@ namespace Assets.Scripts
             {
                 _MainData = new MainData();
             }
+            Debug.Log("HEHE");
         }
-
     }
 }
 
