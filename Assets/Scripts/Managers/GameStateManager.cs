@@ -50,7 +50,7 @@ namespace Assets.Scripts.Managers
             {
                 currInstance.LoadGameMenu();
                 // Set level 
-                SetLevel(currentLevel, currInstance.LevelsData.patientByLevel[(int)currentLevel]);
+                SetLevel(currentLevel);
                 // Set Patient case
                 SetPatientCase(currentPatientCase, currInstance.LevelsData.patientByLevel[(int)currentLevel].patientsCase[(int)currentPatientCase]);
             }
@@ -76,14 +76,14 @@ namespace Assets.Scripts.Managers
             }
         }
 
-        public void SetLevel(LevelState levelState, PatientCaseData patientData)
+        public void SetLevel(LevelState levelState)
         {
             currentLevel = levelState;
-            patientCaseData = patientData;
+            patientCaseData = LevelsData.patientByLevel[(int)levelState];
 
             GameManager.Instance.GameData.SetLevelRecords(currentLevel);
 
-            Debug.Log($"Current Level : {currentLevel}, {patientCaseData.levelName}");
+            Debug.Log($"Current Level : {currentLevel}");
         }
 
         public int GetCurrentLevel() { return (int) currentLevel; }
@@ -111,10 +111,11 @@ namespace Assets.Scripts.Managers
         }
 
         public void NextLevel()
-        {           
+        {
+            Debug.Log("HERE");
             if ((int)currentLevel < LevelsData.patientByLevel.Count)
             {
-                SetLevel(currentLevel, patientCaseData);
+                SetLevel(currentLevel);
                 //Return to game menu
                 ReturnToGameMenu();
             }
@@ -142,6 +143,7 @@ namespace Assets.Scripts.Managers
             else
             {
                 Debug.Log("Tous les cas patient sont terminer! Next Level !");
+                currentPatientCase = PatientCase.PATIENT_0; // Reset patient case
                 currentLevel++;
                 NextLevel();
             }
@@ -150,7 +152,7 @@ namespace Assets.Scripts.Managers
         public void NextStep(AlgoStep step)
         {
             currentStep = step.type;
-            Debug.Log("Next Level: " + currentStep);
+            Debug.Log("Next step: " + currentStep);
             SetStep(currentStep);
         }
 
