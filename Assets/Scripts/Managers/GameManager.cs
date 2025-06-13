@@ -22,17 +22,11 @@ namespace Assets.Scripts.Managers
         #endregion
 
         public static GameManager Instance;
-        //public StatesManager StatesManager { get; private set; }
-
         public GameStateManager GameStateManager { get; private set; }
         public GameData GameData { get; set; }
-
-        //public StepManager StepManager { get; private set; }
         public TelemetryManager TelemetryManager { get; private set; }
         public AudioManager AudioManager { get; private set; }
-
         public PatientAnimation PatientAnimation { get; private set; }
-
         public StepManagerN StepManagerN { get; private set; }
 
 
@@ -124,7 +118,6 @@ namespace Assets.Scripts.Managers
         {
             ClearScreen();
             folderDivider.GetSetDisplayScore(patientName);
-            //go.GetSetDisplayScore(patientName
             _scorePanel.SetActive(true);
         }
 
@@ -209,12 +202,6 @@ namespace Assets.Scripts.Managers
             GameStateManager.SetStep(LevelsData.patientByLevel[currentLevel].patientsCase[currentPatient].steps[0].type);
         }
 
-        // TOGGLE PAUSE
-        public void TogglePause()
-        {
-            //StatesManager.isPaused ^= true;
-        }
-
         // PLAY AUDIO
         public void ClickButton()
         {
@@ -257,12 +244,10 @@ namespace Assets.Scripts.Managers
             Instance = this;
             DontDestroyOnLoad(gameObject);
 
-            //StatesManager = GetComponent<StatesManager>();
             GameStateManager = GetComponent<GameStateManager>();
             GameData = GetComponent<GameData>();
             StepManagerN = GetComponent<StepManagerN>();
 
-            //StepManager = GetComponent<StepManager>();
             TelemetryManager = GetComponent<TelemetryManager>();
             AudioManager = GetComponent<AudioManager>();
             PatientAnimation = GetComponent<PatientAnimation>();
@@ -277,7 +262,6 @@ namespace Assets.Scripts.Managers
             // Check validity of tutorial XML
             XmlManager.ValidateXML(_pathXmlFile, _pathXsdFile);
             
-            //StatesManager.ReturnMainMenu();
             LoadListItems();
 
             _money = PlayerPrefs.GetInt("money", 20);

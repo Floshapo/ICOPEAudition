@@ -416,8 +416,7 @@ namespace Assets.Scripts.Managers
                 _indexStep++;
                 print("Increased indexstep : " + _indexStep);
                 GameManager.Instance.GameStateManager.NextStep(patientData.steps[_indexStep]);
-            }
-             
+            }   
         }
 
         private bool IsStepCompleted(AlgoStep step)

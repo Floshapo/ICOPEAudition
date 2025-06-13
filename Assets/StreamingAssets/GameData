@@ -1,9 +1,8 @@
 <GameData>
-  <totGames>9</totGames>
-  <gameTime>226,7983</gameTime>
-  <nbGameSession>1</nbGameSession>
+  <totGames>12</totGames>
+  <gameTime>424,4704</gameTime>
+  <nbGameSession>2</nbGameSession>
   <sessionTimeQueue>
-    <Item>29,1114</Item>
     <Item>31,93425</Item>
     <Item>11,97621</Item>
     <Item>22,95052</Item>
@@ -12,10 +11,12 @@
     <Item>36,96638</Item>
     <Item>26,15893</Item>
     <Item>23,04095</Item>
+    <Item>31,57978</Item>
+    <Item>166,0923</Item>
   </sessionTimeQueue>
   <levelRecords>
     <LEVEL_0>
-      <levelNbAttempt>9</levelNbAttempt>
+      <levelNbAttempt>11</levelNbAttempt>
       <totPatientCompleted>4</totPatientCompleted>
       <patientCaseRecords>
         <Michel>
@@ -249,23 +250,25 @@
           <stepRecords>
             <Case_presentation_0>
               <diagnoticsAttempt>0</diagnoticsAttempt>
-              <actionAttempt>1</actionAttempt>
+              <actionAttempt>2</actionAttempt>
               <diagnosticAnswer />
               <actionAnswer>
+                <Item>Je réalise une vidéo-otoscopie.</Item>
                 <Item>Je réalise le test de chuchotement.</Item>
               </actionAnswer>
-              <succeeded>True</succeeded>
+              <succeeded>False</succeeded>
             </Case_presentation_0>
             <Wisper_test_0>
               <diagnoticsAttempt>1</diagnoticsAttempt>
-              <actionAttempt>1</actionAttempt>
+              <actionAttempt>2</actionAttempt>
               <diagnosticAnswer>
                 <Item>Il y a une anomalie car elle n’a pas su restituer les 3 mots minimum de chaque  côté.</Item>
               </diagnosticAnswer>
               <actionAnswer>
+                <Item>Je réalise le test de Weber.</Item>
                 <Item>Je fais passer le questionnaire Go-No-Go.</Item>
               </actionAnswer>
-              <succeeded>True</succeeded>
+              <succeeded>False</succeeded>
             </Wisper_test_0>
             <Questionnary_0>
               <diagnoticsAttempt>1</diagnoticsAttempt>
@@ -291,40 +294,118 @@
             </Otoscopy_0>
             <Otoscopy_1>
               <diagnoticsAttempt>0</diagnoticsAttempt>
-              <actionAttempt>2</actionAttempt>
-              <diagnosticAnswer />
-              <actionAnswer>
-                <Item>Son otoscopie est normale, je peux lui faire passer le questionnaire HHIE-S.</Item>
-                <Item>Son otoscopie est normale, je répète le test de chuchotement.</Item>
-              </actionAnswer>
-              <succeeded>False</succeeded>
-            </Otoscopy_1>
-            <Wisper_test_1>
-              <diagnoticsAttempt>0</diagnoticsAttempt>
               <actionAttempt>1</actionAttempt>
               <diagnosticAnswer />
               <actionAnswer>
-                <Item>Le test est normal, je la rassure et lui propose un nouveau dépistage dans 6 mois.</Item>
+                <Item>Son otoscopie est normale, je répète le test de chuchotement.</Item>
               </actionAnswer>
               <succeeded>True</succeeded>
+            </Otoscopy_1>
+            <Wisper_test_1>
+              <diagnoticsAttempt>0</diagnoticsAttempt>
+              <actionAttempt>2</actionAttempt>
+              <diagnosticAnswer />
+              <actionAnswer>
+                <Item>Le test est normal, je lui rappelle l’importance d’un soin quotidien avec le coton tige pour éviter une récidive de son bouchon.</Item>
+                <Item>Le test est normal, je la rassure et lui propose un nouveau dépistage dans 6 mois.</Item>
+              </actionAnswer>
+              <succeeded>False</succeeded>
             </Wisper_test_1>
+            <Case_presentation_1>
+              <diagnoticsAttempt>0</diagnoticsAttempt>
+              <actionAttempt>2</actionAttempt>
+              <diagnosticAnswer />
+              <actionAnswer>
+                <Item>Je ne peux rien faire, je renvoie le patient vers l’ORL.</Item>
+                <Item>Je réalise le test de chuchotement.</Item>
+              </actionAnswer>
+              <succeeded>False</succeeded>
+            </Case_presentation_1>
+            <Wisper_test_2>
+              <diagnoticsAttempt>1</diagnoticsAttempt>
+              <actionAttempt>1</actionAttempt>
+              <diagnosticAnswer>
+                <Item>Il y a une anomalie car il n’a pas su restituer les 3/4 mots des 2 côtés.</Item>
+              </diagnosticAnswer>
+              <actionAnswer>
+                <Item>Je fais passer le questionnaire Go-No-Go.</Item>
+              </actionAnswer>
+              <succeeded>True</succeeded>
+            </Wisper_test_2>
+            <Questionnary_1>
+              <diagnoticsAttempt>1</diagnoticsAttempt>
+              <actionAttempt>1</actionAttempt>
+              <diagnosticAnswer>
+                <Item>Il n’a répondu que des "non", ce qui indique une suspicion de cas simple.</Item>
+              </diagnosticAnswer>
+              <actionAnswer>
+                <Item>Je continue le parcours audition et lui fais passer une vidéo otoscopie.</Item>
+              </actionAnswer>
+              <succeeded>True</succeeded>
+            </Questionnary_1>
+            <Otoscopy_2>
+              <diagnoticsAttempt>2</diagnoticsAttempt>
+              <actionAttempt>1</actionAttempt>
+              <diagnosticAnswer>
+                <Item>Il s’agit d’une otite moyenne aiguë.</Item>
+                <Item>Il s’agit d’un tympan normal.</Item>
+              </diagnosticAnswer>
+              <actionAnswer>
+                <Item>Je continue le parcours audition et lui fait passer le test de Weber.</Item>
+              </actionAnswer>
+              <succeeded>False</succeeded>
+            </Otoscopy_2>
+            <Weber_test_0>
+              <diagnoticsAttempt>2</diagnoticsAttempt>
+              <actionAttempt>1</actionAttempt>
+              <diagnosticAnswer>
+                <Item>Ses réponses révèlent une surdité de perception.</Item>
+                <Item>Ses réponses ne révèlent pas d’anomalie.</Item>
+              </diagnosticAnswer>
+              <actionAnswer>
+                <Item>Je continue le parcours audition et lui fait passer le test HHIE-S.</Item>
+              </actionAnswer>
+              <succeeded>False</succeeded>
+            </Weber_test_0>
+            <HHIES_test_0>
+              <diagnoticsAttempt>1</diagnoticsAttempt>
+              <actionAttempt>1</actionAttempt>
+              <diagnosticAnswer>
+                <Item>Le score est en faveur de difficultés modérées.</Item>
+              </diagnosticAnswer>
+              <actionAnswer>
+                <Item>Il est pertinent de réaliser l’audiométrie </Item>
+              </actionAnswer>
+              <succeeded>True</succeeded>
+            </HHIES_test_0>
+            <Audiometry_0>
+              <diagnoticsAttempt>1</diagnoticsAttempt>
+              <actionAttempt>1</actionAttempt>
+              <diagnosticAnswer>
+                <Item>Le score montre une surdité de perception.</Item>
+              </diagnosticAnswer>
+              <actionAnswer>
+                <Item>En accord avec votre médecin référent, une prescription de prothèse auditive est délivrée à Mr Dupont.</Item>
+              </actionAnswer>
+              <succeeded>True</succeeded>
+            </Audiometry_0>
           </stepRecords>
-          <nbAttempt>6</nbAttempt>
-          <totDiagnosticCorrect>126</totDiagnosticCorrect>
-          <totDiagnosticError>0</totDiagnosticError>
-          <totActionCorrect>106</totActionCorrect>
-          <totActionError>20</totActionError>
-          <totError>20</totError>
-          <totStepSucceed>106</totStepSucceed>
-          <totStepFailed>20</totStepFailed>
-          <numberDiagCorrect>6</numberDiagCorrect>
-          <numberDiagIncorrect>0</numberDiagIncorrect>
-          <numberActionCorrect>5</numberActionCorrect>
-          <numberActionIncorrect>1</numberActionIncorrect>
-          <numberStepSucceed>5</numberStepSucceed>
-          <numberStepFailed>1</numberStepFailed>
-          <successRate>83,33334</successRate>
-          <timePassed>22,77387</timePassed>
+          <nbAttempt>8</nbAttempt>
+          <totDiagnosticCorrect>309</totDiagnosticCorrect>
+          <totDiagnosticError>7</totDiagnosticError>
+          <totActionCorrect>205</totActionCorrect>
+          <totActionError>111</totActionError>
+          <totError>118</totError>
+          <totStepSucceed>198</totStepSucceed>
+          <totStepFailed>118</totStepFailed>
+          <numberDiagCorrect>17</numberDiagCorrect>
+          <numberDiagIncorrect>2</numberDiagIncorrect>
+          <numberActionCorrect>12</numberActionCorrect>
+          <numberActionIncorrect>7</numberActionIncorrect>
+          <numberStepSucceed>10</numberStepSucceed>
+          <numberStepFailed>9</numberStepFailed>
+          <successRate>52,63158</successRate>
+          <timePassed>163,5614</timePassed>
         </Denise>
       </patientCaseRecords>
     </LEVEL_0>
