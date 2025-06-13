@@ -90,8 +90,6 @@ namespace Assets.Scripts
             }
         }
 
-        
-
         // TIMER DATA
         public struct TimerData
         {
@@ -119,8 +117,11 @@ namespace Assets.Scripts
         [SerializeField] private string path = "GameData"; // GameData
 
         /// <summary>
-        /// Initialize Dictionarys (_levelRecords<LevelState, LevelRecords> & _stepRecords<AlgoState, StepRecords>) when a game start (click on the GrandMa/GrandPa).
+        /// Initializes the record collections used to store level, patient case, and step data.
         /// </summary>
+        /// <remarks>This method sets up the necessary dictionaries for managing records. If the level
+        /// records collection is null, it will be initialized. Patient case and step records collections are always
+        /// reinitialized.</remarks>
         public void InitializeRecords()
         {
             if (_levelRecords == null)
@@ -132,25 +133,36 @@ namespace Assets.Scripts
         }
 
         /// <summary>
-        /// Set the dictionary<AlgoState, StepRecords> _stepRecords as a key an AlgoState (input parameter: currentAlgoState) and a value a new StepRecords.
+        /// Updates the internal step records with the specified algorithm step.
         /// </summary>
-        /// <param name="algoStep"></param>
+        /// <remarks>This method associates the provided algorithm step with a new set of step records.
+        /// Existing records for the same key will be overwritten.</remarks>
+        /// <param name="algoStep">The algorithm step to be recorded. This value is used to generate a unique key for storing the step records.</param>
         public void SetStepRecords(Step algoStep)
         {
             _currentKey = GetUniqueKeyStep(_stepRecords, algoStep.ToString());
             _stepRecords[_currentKey] = new StepRecords(0, 0, new List<string>(), new List<string>());
         }
 
+        
         /// <summary>
-        /// Modify/records the data form the player (attempt, actionError, diagnoticError) of the current step (AlgoState).
-        /// Take as inputs AlgoState, string of action error and a string of diagnostic error. 
+        /// Records the progress and results of a step in the algorithm, updating diagnostic and action attempts.
         /// </summary>
-        /// <param name="algoStep"></param>
-        /// <param name="action"></param>
-        /// <param name="diagnostic"></param>
+        /// <remarks>This method updates the diagnostic and action attempts for the specified step, and
+        /// determines whether the step is considered successful. A step is marked as successful if it has at least one
+        /// action attempt, regardless of diagnostic attempts. If <paramref name="isDiagnotics"/> is <see
+        /// langword="true"/>, the diagnostic attempt count is incremented, and the provided answer is added to the
+        /// diagnostic answers. If <paramref name="isAction"/> is <see langword="true"/>, the action attempt count is
+        /// incremented, and the provided answer is added to the action answers.</remarks>
+        /// <param name="algoStep">The step of the algorithm being recorded.</param>
+        /// <param name="isDiagnotics">Indicates whether the step is a diagnostic step. <see langword="true"/> if it is; otherwise, <see
+        /// langword="false"/>.</param>
+        /// <param name="isAction">Indicates whether the step is an action step. <see langword="true"/> if it is; otherwise, <see
+        /// langword="false"/>.</param>
+        /// <param name="answer">The answer or result associated with the step. Can be <see langword="null"/> or empty if no answer is
+        /// provided.</param>
         public void RecordsSteps(Step algoStep, bool isDiagnotics, bool isAction, string answer)
         {
-
             // Key : Questionnaire_0 | (string)algoStep+'_'+0 (int)
             if (!_stepRecords.ContainsKey(_currentKey)) return;
             
@@ -176,6 +188,14 @@ namespace Assets.Scripts
             _stepRecords[_currentKey] = stepData;
         }
 
+        /// <summary>
+        /// Generates a unique key for a step by appending an incrementing index to the base name.
+        /// Ensures that the generated key does not already exist in the provided dictionary.
+        /// </summary>
+        /// <param name="dict">The dictionary to check for existing keys.</param>
+        /// <param name="baseName">The base name to use for the key.</param>
+        /// <returns>A unique key string based on the base name and index.</returns>
+        /// </summary>
         private static string GetUniqueKeyStep(Dictionary<string, StepRecords> dict, string baseName)
         {
             int index = 0;
@@ -188,20 +208,43 @@ namespace Assets.Scripts
             return key;
         }
         
+        /// <summary>
+        /// Associates a new <see cref="PatientCaseRecords"/> instance with the specified patient name if one does not
+        /// already exist.
+        /// </summary>
+        /// <remarks>If the specified <paramref name="patientName"/> is not already present in the
+        /// collection,  a new <see cref="PatientCaseRecords"/> instance is created and added. If the patient name
+        /// already exists, no changes are made.</remarks>
+        /// <param name="patientName">The name of the patient for whom the case records are being set. Cannot be null or empty.</param>
         public void SetPatientCaseRecorder(string patientName)
         {
             if (!_patientCaseRecords.ContainsKey(patientName)) _patientCaseRecords[patientName] = new PatientCaseRecords();
         }
 
+        /// <summary>
+        /// Retrieves the case records for a specified patient.
+        /// </summary>
+        /// <param name="name">The name of the patient whose case records are to be retrieved. Cannot be null or empty.</param>
+        /// <returns>The <see cref="PatientCaseRecords"/> object containing the case records for the specified patient. If the
+        /// patient does not exist, the method may log an error and return an undefined value.</returns>
         public PatientCaseRecords GetPatientCaseRecords(string name)
         {
             if (!_patientCaseRecords.ContainsKey(name)) Debug.LogError($"Patient '{name}' not found.");
             return _patientCaseRecords[name];
         }
 
+        /// <summary>
+        /// Records the results of a patient's case, updating diagnostic, action, and step statistics.
+        /// </summary>
+        /// <remarks>This method updates various statistics for the specified patient's case, including
+        /// the number of  correct and incorrect diagnostics, actions, and steps, as well as the total time elapsed.  If
+        /// the specified <paramref name="patientName"/> does not exist in the patient case records,  an error is
+        /// logged.</remarks>
+        /// <param name="patientName">The name of the patient whose case results are being recorded.  Must correspond to an existing key in the
+        /// patient case records.</param>
         public void RecordsPatientCase(string patientName)
         {
-            if (!_patientCaseRecords.ContainsKey(patientName)) Debug.LogError("Key "+patientName+" not found in patientCaseRecorder.");
+            if (!_patientCaseRecords.ContainsKey(patientName)) Debug.LogError($"Key {patientName} not found in patientCaseRecorder.");
 
             PatientCaseRecords patientCaseRecords = _patientCaseRecords[patientName];
             patientCaseRecords.nbAttempt++;
@@ -229,27 +272,15 @@ namespace Assets.Scripts
 
             patientCaseRecords.timePassed = Time.time - _levelTimer.startTime;
             patientCaseRecords.stepRecords = _stepRecords;
-
-            Debug.Log("PLOP");
-
             _patientCaseRecords[patientName] = patientCaseRecords;
         }
 
-        public void ResetPatientCase(string patientName)
-        {
-            var patientCase = _patientCaseRecords[patientName];
-            patientCase.numberDiagCorrect = 0;
-            patientCase.numberDiagIncorrect = 0;
-            patientCase.numberActionCorrect = 0;
-            patientCase.numberActionIncorrect = 0;
-            patientCase.numberStepSucceed = 0;
-            patientCase.numberStepFailed = 0;
-        }
-
         /// <summary>
-        /// Set the dictionary<LevelState, LevelRecords> _levelRecords as a key a LevelState (input parameter: currentLevelState) and value a new LevelRecords.
+        /// Updates the level records for the specified level state.
         /// </summary>
-        /// <param name="levelState"></param>
+        /// <remarks>If the specified <paramref name="levelState"/> does not already exist in the level
+        /// records, a new entry is created with default values.</remarks>
+        /// <param name="levelState">The state of the level for which records should be updated.</param>
         public void SetLevelRecords(LevelState levelState)
         {
             _levelTimer = new TimerData(Time.time);
@@ -258,9 +289,12 @@ namespace Assets.Scripts
 
 
         /// <summary>
-        /// Modify/records the data from the player (attempt, nbStepSucced, nbStepFailed, totActionError, totDiagnostics, timeSpentInLevel, stepRecords) of the current level (LevelState).
+        /// Updates the record for the specified level state with the latest attempt count,  total number of completed
+        /// patient cases, and associated patient case records.
         /// </summary>
-        /// <param name="levelState"></param>
+        /// <remarks>If the specified <paramref name="levelState"/> does not exist in the level records
+        /// dictionary,  the method performs no action.</remarks>
+        /// <param name="levelState">The state of the level to update. Must be a valid key in the level records dictionary.</param>
         public void RecordsLevel(LevelState levelState)
         {
             if (!_levelRecords.ContainsKey(levelState)) return;
@@ -275,7 +309,16 @@ namespace Assets.Scripts
         }
 
 
-
+        /// <summary>
+        /// Converts the case records of a specified patient into an array of string representations.
+        /// </summary>
+        /// <remarks>The method retrieves data from the internal patient case records and formats it into
+        /// string representations. Ensure that the <paramref name="patientName"/> corresponds to a valid entry in the
+        /// records.</remarks>
+        /// <param name="patientName">The name of the patient whose case records are to be converted. Cannot be null or empty.</param>
+        /// <returns>An array of strings containing the patient's case record data, including the number of attempts, total
+        /// action errors, total diagnostic errors, and the time passed in hours, minutes, and seconds. Returns <see
+        /// langword="null"/> if the specified patient does not exist in the records.</returns>
         public string[] PatientCaseRecordsToString(string patientName)
         {
             string[] texts = new string[4];
@@ -295,6 +338,17 @@ namespace Assets.Scripts
             return texts;
         }
 
+        /// <summary>
+        /// Retrieves step records as a dictionary of string keys and string array values,  representing diagnostic and
+        /// action attempts, answers, and success status for a specific step.
+        /// </summary>
+        /// <remarks>The returned dictionary provides a structured representation of the step's data,
+        /// which can be used for  logging, debugging, or further processing. Ensure that the <paramref
+        /// name="indexStep"/> corresponds to  a valid step to avoid exceptions.</remarks>
+        /// <param name="indexStep">The index of the step to retrieve records for. Must correspond to a valid step.</param>
+        /// <returns>A dictionary where the key is a unique string identifier for the step, and the value is an array of strings 
+        /// containing diagnostic attempts, action attempts, the last action answer, the last diagnostic answer,  and a
+        /// success status message.</returns>
         public Dictionary<string, string[]> GetStepRecordsToString(int indexStep)
         {
             Step step = (Step)indexStep;
@@ -316,8 +370,10 @@ namespace Assets.Scripts
 
 
         /// <summary>
-        /// Change the number of game when the game start.
+        /// Updates the main records at the start of a new game level.
         /// </summary>
+        /// <remarks>This method increments the number of game sessions and updates the total games
+        /// played. If the session time queue is null, it initializes it as an empty queue.</remarks>
         public void UpdateMainRecordsOnLevelStart()
         {
             _MainData.nbGameSession++;
@@ -327,9 +383,11 @@ namespace Assets.Scripts
         }
 
         /// <summary>
-        /// Modify/records the data form the player (nbLevelsCompleted, nbStepsCompleted, globalActionErrors, globalDiagnosticErrors, gameTime, currentSessionTime and levelRecords).
-        /// Save-it in xml file "GameData".
+        /// Updates the main game records at the end of a level.
         /// </summary>
+        /// <remarks>This method updates the total game time, session time queue, and level records. It
+        /// ensures that the session time queue contains no more than 10 entries, representing the most recent session
+        /// durations. Additionally, the updated game data is saved to an XML file.</remarks>
         public void UpdateMainRecordsOnLevelEnd()
         {
 
@@ -354,6 +412,13 @@ namespace Assets.Scripts
             return _MainData.nbGameSession == 0;
         }
 
+        /// <summary>
+        /// Converts a floating-point time value, representing seconds, into a formatted string in the "HH:mm:ss"
+        /// format.
+        /// </summary>
+        /// <param name="time">The time value in seconds as a floating-point number. Must be non-negative.</param>
+        /// <returns>A string representing the time in "HH:mm:ss" format, where "HH" is hours, "mm" is minutes, and "ss" is
+        /// seconds.</returns>
         private static string FloatToHMS(float time)
         {
             int totalSeconds = Mathf.RoundToInt(time);
@@ -365,8 +430,14 @@ namespace Assets.Scripts
 
 
         /// <summary>
-        /// Unity fuction. On start set _globalTimer and try to get Data form xml file "GameData" and set _globalData, _levelRecords and _stepRecords with the loaded data.
+        /// Initializes the game session by setting up timers, loading game data, and preparing records.
         /// </summary>
+        /// <remarks>This method performs the following actions: <list type="bullet"> <item>Starts the
+        /// global timer for tracking session time.</item> <item>Initializes game records and paths for data
+        /// storage.</item> <item>Attempts to load the last session's game data from a file, if it exists.</item>
+        /// <item>If game data is successfully loaded, resets the session count and prepares level and patient case
+        /// records.</item> <item>If no game data file is found, initializes a new game data object.</item>
+        /// </list></remarks>
         void Start()
         {
             _globalTimer = new TimerData(Time.time); // Start the global timer            
@@ -394,7 +465,6 @@ namespace Assets.Scripts
             {
                 _MainData = new MainData();
             }
-            Debug.Log("HEHE");
         }
     }
 }
@@ -478,6 +548,4 @@ StepData : Dictonary<AlgoState, StepRecords>
         |   |      |   | attempt - int
         |   |      |   | diagnosticError - List<string>
         |   |      |   | actionError - List<string>
-
-
  */
