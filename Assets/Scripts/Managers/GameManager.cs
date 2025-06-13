@@ -1,16 +1,12 @@
-using Assets.Scripts.PatientData;
-using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-using static Assets.Scripts.Managers.GameStateManager;
 using Assets.Scripts.PatientData.AlgoData;
 using Assets.Scripts.UI.ScoreContents;
 
 namespace Assets.Scripts.Managers
 {
     [RequireComponent(typeof(GameStateManager))]
-    //[RequireComponent(typeof(StepManager))]
     [RequireComponent(typeof(TelemetryManager))]
     [RequireComponent(typeof(AudioManager))]
     [RequireComponent(typeof(PatientAnimation))]

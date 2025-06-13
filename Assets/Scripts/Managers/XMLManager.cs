@@ -11,7 +11,7 @@ using UnityEngine;
 using static Assets.Scripts.GameData;
 using static Assets.Scripts.Managers.GameStateManager;
 
-namespace Assets.Scripts
+namespace Assets.Scripts.Managers
 {
     /// <summary>
     /// XML Manager allow to save the data form the game and load-it.

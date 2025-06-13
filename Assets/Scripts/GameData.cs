@@ -3,10 +3,6 @@ using Assets.Scripts.PatientData.AlgoData;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Xml;
-using Unity.PlasticSCM.Editor.WebApi;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 using static Assets.Scripts.Managers.GameStateManager;
 

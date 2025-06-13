@@ -1,6 +1,5 @@
 using Assets.Scripts.Managers;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Assets.Scripts.UI.TutorialContents
