@@ -103,6 +103,9 @@ namespace Assets.Scripts
             }
         }
 
+        // path to the xml file which save player data
+        [SerializeField] private string path = "GameData"; // GameData
+
         // RECORDS VARIABLES
         private Dictionary<string, StepRecords> _stepRecords;
         private Dictionary<string, PatientCaseRecords> _patientCaseRecords;
@@ -114,7 +117,6 @@ namespace Assets.Scripts
         private TimerData _levelTimer;
         private TimerData _globalTimer;
 
-        [SerializeField] private string path = "GameData"; // GameData
 
         /// <summary>
         /// Initializes the record collections used to store level, patient case, and step data.

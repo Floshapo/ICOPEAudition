@@ -112,7 +112,6 @@ namespace Assets.Scripts.Managers
 
         public void NextLevel()
         {
-            Debug.Log("HERE");
             if ((int)currentLevel < LevelsData.patientByLevel.Count)
             {
                 SetLevel(currentLevel);
