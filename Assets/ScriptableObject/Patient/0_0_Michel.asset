@@ -34,7 +34,7 @@ MonoBehaviour:
     value: 8/8
   medicalHistory: "Dans ses ant\xE9c\xE9dents on retrouve une Hypertension art\xE9rielle
     trait\xE9e par Ramipril 5mg.\r"
-  descriptionLevel: '"Cock solid"'
+  descriptionLevel: Test.
   steps:
   - type: 0
     contextDescription: "\xC0 la suite de la lecture d\u2019un article dans le journal,

@@ -230,7 +230,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1646151927089220750
 RectTransform:
   m_ObjectHideFlags: 0
@@ -246,10 +246,10 @@ RectTransform:
   - {fileID: 135785854209375950}
   m_Father: {fileID: 2637940991764597086}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 200, y: -250}
-  m_SizeDelta: {x: 400, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8529427859783047450
 CanvasRenderer:
@@ -286,6 +286,8 @@ MonoBehaviour:
       m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
       m_ColorMultiplier: 0
       m_FadeDuration: 0
+  isFocus: 0
+  isDisable: 1
   stayFocusOnPressed: 1
   OnPress:
     m_PersistentCalls:
@@ -551,7 +553,7 @@ MonoBehaviour:
   levelCompos:
   - difficultiesBt: {fileID: 4871257239075094817}
   - difficultiesBt: {fileID: 4333570249856594523}
-  levelsData: {fileID: 0}
+  startGameButton: {fileID: 1135954005128451366}
 --- !u!1 &1449180360503399636
 GameObject:
   m_ObjectHideFlags: 0
@@ -800,8 +802,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 2160642248
+  m_fontColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1128,8 +1130,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 2160642248
+  m_fontColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1481,6 +1483,8 @@ MonoBehaviour:
       m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
       m_ColorMultiplier: 0
       m_FadeDuration: 0
+  isFocus: 0
+  isDisable: 0
   stayFocusOnPressed: 1
   OnPress:
     m_PersistentCalls:
@@ -1567,6 +1571,8 @@ MonoBehaviour:
       m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
       m_ColorMultiplier: 0
       m_FadeDuration: 0
+  isFocus: 0
+  isDisable: 0
   stayFocusOnPressed: 1
   OnPress:
     m_PersistentCalls:
@@ -2359,7 +2365,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7346194254423940068
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2375,10 +2381,10 @@ RectTransform:
   - {fileID: 7675110072930386845}
   m_Father: {fileID: 2637940991764597086}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 200, y: -250}
-  m_SizeDelta: {x: 400, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1343187827275530988
 CanvasRenderer:
@@ -2415,6 +2421,8 @@ MonoBehaviour:
       m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
       m_ColorMultiplier: 0
       m_FadeDuration: 0
+  isFocus: 0
+  isDisable: 1
   stayFocusOnPressed: 1
   OnPress:
     m_PersistentCalls:
@@ -2548,7 +2556,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2034578910971360827}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1325755650824121649}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8882201697183920630
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,6 +2,8 @@ using Assets.Scripts;
 using Assets.Scripts.Managers;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+using static Assets.Scripts.Managers.GameStateManager;
 
 public class LevelSelector : MonoBehaviour
 {
@@ -17,13 +19,17 @@ public class LevelSelector : MonoBehaviour
     [SerializeField] private GameObject patientButtonsContainer, patientButtonPref; // container and pref to instantiate inside.
     [SerializeField] private TextMeshProUGUI description; // descriptions text ui.
     [SerializeField, Header("Difficulty buttons")] private LevelComposition[] levelCompos;
+    [SerializeField, Header("Start button")] private Button startGameButton;
 
-    [SerializeField, Header("Data levels")] private LevelsData levelsData;
-
+    private LevelsData levelsData;
     private int currentIndexLevelSelected = 0;
+    private int currentIndexPatientCase = 0;
 
     void Start()
     {
+        // add listerner to stats button
+        startGameButton.onClick.AddListener(LoadPatientCase);
+
         // Load levels
         levelsData = GameManager.Instance.LevelsData;
 
@@ -106,8 +112,19 @@ public class LevelSelector : MonoBehaviour
 
     private void ChangeDescription(int indexPatientCase)
     {
+        currentIndexPatientCase = indexPatientCase;
         string infoLevel = levelsData.patientByLevel[currentIndexLevelSelected].patientsCase[indexPatientCase].descriptionLevel;
         description.text = infoLevel;
+    }
+
+    // Call on "commencer" button click by player
+    private void LoadPatientCase()
+    {
+        // SET Game state level and patient case
+        GameManager.Instance.GameStateManager.SetLevel((LevelState) currentIndexLevelSelected);
+        GameManager.Instance.GameStateManager.SetPatientCase((PatientCase)currentIndexPatientCase, levelsData.patientByLevel[currentIndexLevelSelected].patientsCase[currentIndexPatientCase]);
+        // Re-load game menus (need to change patient sprite)
+        GameManager.Instance.LoadGameMenu();
     }
 
 }

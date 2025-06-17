@@ -103,7 +103,7 @@ namespace Assets.Scripts
             }
         }
 
-        // path to the xml file which save player data
+        // path to the xml file which save player data 
         [SerializeField] private string path = "GameData"; // GameData
 
         // RECORDS VARIABLES

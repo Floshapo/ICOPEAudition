@@ -6,10 +6,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Serialization;
 using TMPro;
-using Unity.VisualScripting;
-using UnityEditor;
-using UnityEditor.Overlays;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 
 namespace Assets.Scripts.Managers

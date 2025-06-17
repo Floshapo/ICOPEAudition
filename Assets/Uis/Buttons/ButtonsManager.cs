@@ -7,7 +7,7 @@ public static class ButtonsManager
 
     public static void Connectbutton(ButtonPressDetector button)
     {
-        Debug.Log("" + button.groupId);
+        //Debug.Log("" + button.groupId);
         if (connectedButtons.ContainsKey(button.groupId))
             connectedButtons[button.groupId].Add(button);
         else connectedButtons.Add(button.groupId, new List<ButtonPressDetector> { button });

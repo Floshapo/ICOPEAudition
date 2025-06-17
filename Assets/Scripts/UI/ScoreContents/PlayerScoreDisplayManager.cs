@@ -1,14 +1,9 @@
 using Assets.Scripts.Managers;
 using Assets.Scripts.PatientData.AlgoData;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Xml.Serialization;
 using TMPro;
-using TMPro.EditorUtilities;
 using UnityEngine;
 using UnityEngine.UI;
-using static Assets.Scripts.GameData;
 
 namespace Assets.Scripts.UI.ScoreContents
 {

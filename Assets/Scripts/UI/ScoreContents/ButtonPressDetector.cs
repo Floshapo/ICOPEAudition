@@ -24,8 +24,7 @@ public class ButtonPressDetector : Graphic, IPointerDownHandler, IPointerUpHandl
     }
     public int groupId = 0;
     [SerializeField] private List<IconColor> iconColors;
-    [SerializeField] private bool stayFocusOnPressed = true;
-
+    [SerializeField] private bool isFocus = false, isDisable = false, stayFocusOnPressed = true;
 
     public UnityEvent OnPress, OnPressExit, OnHover, OnHoverExit;
 
@@ -34,6 +33,8 @@ public class ButtonPressDetector : Graphic, IPointerDownHandler, IPointerUpHandl
     protected override void Awake()
     {
         ButtonsManager.Connectbutton(this);
+        if (isFocus) ButtonsManager.SetButtonFocused(this);
+        if (isDisable) AssignState(ButtonState.Disable);
     }
 
     protected override void OnEnable()
@@ -42,44 +43,59 @@ public class ButtonPressDetector : Graphic, IPointerDownHandler, IPointerUpHandl
         AssignColor();
     }
 
-    public void AssignState(ButtonState state)
+    public void AssignState(ButtonState state, bool overrideDisable = false)
     {
-        currentButtonState = state;
-        AssignColor();
+        if (currentButtonState != ButtonState.Disable || overrideDisable)
+        {
+            currentButtonState = state;
+            AssignColor();
+        }
     }
 
     public virtual void OnPointerDown(PointerEventData eventData)
     {
-        ButtonsManager.SetButtonFocused(this);
-        OnPress.Invoke();
+        if (currentButtonState != ButtonState.Disable)
+        {
+            ButtonsManager.SetButtonFocused(this);
+            OnPress.Invoke();
+        }
     }
 
     public virtual void OnPointerUp(PointerEventData eventData)
     {
-        if (!stayFocusOnPressed || currentButtonState != ButtonState.Pressed)
+        if (currentButtonState != ButtonState.Disable)
         {
-            currentButtonState = ButtonState.Released;
-            AssignColor();
+            if (!stayFocusOnPressed || currentButtonState != ButtonState.Pressed)
+            {
+                currentButtonState = ButtonState.Released;
+                AssignColor();
+            }
+            OnPressExit.Invoke();
         }
-        OnPressExit.Invoke();
     }
 
     public virtual void OnPointerEnter(PointerEventData eventData)
     {
-        currentButtonState = currentButtonState == ButtonState.Pressed ? ButtonState.HoveredPressed : ButtonState.Hovered;
-        AssignColor();
-        OnHover.Invoke();
+        if (currentButtonState != ButtonState.Disable)
+        {
+            currentButtonState = currentButtonState == ButtonState.Pressed ? ButtonState.HoveredPressed : ButtonState.Hovered;
+            AssignColor();
+            OnHover.Invoke();
+        }
     }
 
     public virtual void OnPointerExit(PointerEventData eventData)
     {
-        if (!stayFocusOnPressed || currentButtonState != ButtonState.Pressed)
+        if (currentButtonState != ButtonState.Disable)
         {
-            currentButtonState = currentButtonState == ButtonState.HoveredPressed ? ButtonState.Pressed : ButtonState.None;
-            AssignColor();
-        }
+            if (!stayFocusOnPressed || currentButtonState != ButtonState.Pressed)
+            {
+                currentButtonState = currentButtonState == ButtonState.HoveredPressed ? ButtonState.Pressed : ButtonState.None;
+                AssignColor();
+            }
             OnHoverExit.Invoke();
         }
+    }
 
     private void AssignColor()
     {
