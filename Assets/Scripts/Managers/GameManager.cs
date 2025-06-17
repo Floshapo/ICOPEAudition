@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Assets.Scripts.PatientData.AlgoData;
 using Assets.Scripts.UI.ScoreContents;
+using Assets.Scripts.PatientData;
 
 namespace Assets.Scripts.Managers
 {

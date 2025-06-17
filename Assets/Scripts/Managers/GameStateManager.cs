@@ -120,7 +120,6 @@ namespace Assets.Scripts.Managers
                 // TAMPORARY FIX - Restart the game
                 currentLevel = LevelState.LEVEL_0;
                 currentPatientCase = PatientCase.PATIENT_0;
-                
                 //SET RANDOM MOD (load patient in random make list of all patient)
                 //Return to game menu
                 ReturnToGameMenu();
@@ -140,6 +139,9 @@ namespace Assets.Scripts.Managers
                 Debug.Log("Tous les cas patient sont terminer! Next Level !");
                 currentPatientCase = PatientCase.PATIENT_0; // Reset patient case
                 currentLevel++;
+                // Clear patient case records 
+                GameManager.Instance.GameData.ClearPatientCaseRecordsOnNextLevel();
+                
                 NextLevel();
             }
         }
@@ -153,7 +155,7 @@ namespace Assets.Scripts.Managers
 
         public void SaveShowScores()
         {
-            Debug.Log("Level completed ! ");
+            Debug.Log("Patient completed ! ");
             // Saving player data
             SavePlayerData();
             // Load resume screen - Same
@@ -191,10 +193,11 @@ namespace Assets.Scripts.Managers
                 {
                     // TO CHANGE : Load next level & patientCase = 0
                     currentPatientCase = savedPatientCase;
+                    currentLevel++;
                 }
             }
 
-            Debug.Log($"Last level played : {currentLevel}, last patient played: {currentPatientCase}");
+            Debug.Log($"Next level played : {currentLevel}, Next patient played: {currentPatientCase}");
         } 
 
         private void Start()

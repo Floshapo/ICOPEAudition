@@ -1,5 +1,5 @@
-using Assets.Scripts;
 using Assets.Scripts.Managers;
+using Assets.Scripts.PatientData;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -27,6 +27,7 @@ public class LevelSelector : MonoBehaviour
 
     void Start()
     {
+        Debug.Log("Here"); 
         // add listerner to stats button
         startGameButton.onClick.AddListener(LoadPatientCase);
 
@@ -42,6 +43,7 @@ public class LevelSelector : MonoBehaviour
             int index = i;
             levelCompos[i].difficultiesBt.OnPress.AddListener(delegate { ChangeLevel(index); });
         }
+
     }
 
     private void ActivePatientUiElements(bool active)
@@ -56,14 +58,15 @@ public class LevelSelector : MonoBehaviour
     {
         // get level composition
         currentIndexLevelSelected = index;
-        // check if level have patient
+
+        Debug.Log($"Button pressed: {currentIndexLevelSelected}");
 
         // Get nb patient case
         int nbPatient = levelsData.patientByLevel[currentIndexLevelSelected].patientsCase.Count;
 
-
         if (nbPatient > 1)
         {
+            
             // assign current description and patient buttons
             ShowPatientButtons(nbPatient);
             ActivePatientUiElements(true);
@@ -82,6 +85,8 @@ public class LevelSelector : MonoBehaviour
     {
         // instatiate missing buttons
 
+        int currentPatient = GameManager.Instance.GameStateManager.GetCurrentPatientCase();
+
         // Get nb patient case
 
         if (patientButtonsContainer.transform.childCount < nbPatient)
@@ -98,33 +103,42 @@ public class LevelSelector : MonoBehaviour
             int bindex = b;
             if (bindex < nbPatient)
             {
-                // TODO : REMPLACER PAR TON GETNAME (tu peux utiliser currentIndexSelected pour avoir l'id du niveau actuel)
                 string name = levelsData.patientByLevel[currentIndexLevelSelected].patientsCase[bindex].fisrtName;
                 patientButtonsContainer.transform.GetChild(bindex).GetChild(0).GetComponent<TextMeshProUGUI>().text = name;
-
-                patientButtonsContainer.transform.GetChild(bindex).GetComponent<ButtonPressDetector>().OnPress.AddListener(delegate { ChangeDescription(bindex); });
+                
+                patientButtonsContainer.transform.GetChild(bindex).GetComponent<ButtonPressDetector>().OnPress.AddListener(delegate { ChangeDescription(bindex); });                
                 patientButtonsContainer.transform.GetChild(bindex).gameObject.SetActive(true);
+
+                if (bindex > currentPatient) patientButtonsContainer.transform.GetChild(bindex).GetComponent<ButtonPressDetector>().AssignState(ButtonPressDetector.ButtonState.Disable);
+                else patientButtonsContainer.transform.GetChild(bindex).GetComponent<ButtonPressDetector>().AssignState(ButtonPressDetector.ButtonState.None, true);
             }
             else patientButtonsContainer.transform.GetChild(bindex).gameObject.SetActive(false);
         }
     }
 
-
     private void ChangeDescription(int indexPatientCase)
     {
+        Debug.Log($"Current Button patient : {indexPatientCase}");
         currentIndexPatientCase = indexPatientCase;
         string infoLevel = levelsData.patientByLevel[currentIndexLevelSelected].patientsCase[indexPatientCase].descriptionLevel;
         description.text = infoLevel;
     }
 
+    public  void UpdateLevelButton()
+    {
+        int currentLevel = GameManager.Instance.GameStateManager.GetCurrentLevel();
+        levelCompos[currentLevel].difficultiesBt.AssignState(ButtonPressDetector.ButtonState.None, true);
+    }
+
     // Call on "commencer" button click by player
     private void LoadPatientCase()
     {
+        Debug.Log($"Level selected: {currentIndexLevelSelected}, current patient case selectes {currentIndexPatientCase}");
         // SET Game state level and patient case
-        GameManager.Instance.GameStateManager.SetLevel((LevelState) currentIndexLevelSelected);
-        GameManager.Instance.GameStateManager.SetPatientCase((PatientCase)currentIndexPatientCase, levelsData.patientByLevel[currentIndexLevelSelected].patientsCase[currentIndexPatientCase]);
+        //GameManager.Instance.GameStateManager.SetLevel((LevelState) currentIndexLevelSelected);
+        //GameManager.Instance.GameStateManager.SetPatientCase((PatientCase)currentIndexPatientCase, levelsData.patientByLevel[currentIndexLevelSelected].patientsCase[currentIndexPatientCase]);
         // Re-load game menus (need to change patient sprite)
-        GameManager.Instance.LoadGameMenu();
+        //GameManager.Instance.LoadGameMenu();
     }
 
 }

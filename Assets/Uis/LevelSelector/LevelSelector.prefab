@@ -1572,7 +1572,7 @@ MonoBehaviour:
       m_ColorMultiplier: 0
       m_FadeDuration: 0
   isFocus: 0
-  isDisable: 0
+  isDisable: 1
   stayFocusOnPressed: 1
   OnPress:
     m_PersistentCalls:

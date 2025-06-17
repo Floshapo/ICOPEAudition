@@ -2,7 +2,7 @@ using Assets.Scripts.PatientData;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.Scripts
+namespace Assets.Scripts.PatientData
 {
     [CreateAssetMenu(fileName = "LevelsData", menuName = "Medical/LevelsData")]
     public class LevelsData : ScriptableObject

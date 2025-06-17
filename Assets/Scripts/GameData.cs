@@ -7,7 +7,7 @@ using UnityEngine;
 using static Assets.Scripts.Managers.GameStateManager;
 
 namespace Assets.Scripts
-{
+{    
     public class GameData : MonoBehaviour
     {
         // RECORDS OF CURRENT STEPS OF ALGO - DATA TO SHOW IN STEP SELECTOR OR STORE
@@ -223,6 +223,11 @@ namespace Assets.Scripts
             if (!_patientCaseRecords.ContainsKey(patientName)) _patientCaseRecords[patientName] = new PatientCaseRecords();
         }
 
+        public void ClearPatientCaseRecordsOnNextLevel()
+        {
+            _patientCaseRecords.Clear();
+        }
+
         /// <summary>
         /// Retrieves the case records for a specified patient.
         /// </summary>
@@ -429,7 +434,6 @@ namespace Assets.Scripts
             int seconds = totalSeconds % 60;
             return string.Format("{0:00}:{1:00}:{2:00}", hours, minutes, seconds);
         }
-
 
         /// <summary>
         /// Initializes the game session by setting up timers, loading game data, and preparing records.
