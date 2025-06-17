@@ -3755,11 +3755,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.003921569}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  groupId: 0
   iconColors:
-  - buttonIcone: {fileID: 3159931323213928816}
+  - targetGraphic: {fileID: 3159931323213928816}
     colorBlock:
       m_NormalColor: {r: 0.96862745, g: 0.6784314, b: 0.5019608, a: 1}
       m_HighlightedColor: {r: 1, g: 0.8943053, b: 0.8039216, a: 1}
@@ -3768,6 +3769,7 @@ MonoBehaviour:
       m_DisabledColor: {r: 0.6830188, g: 0.6830188, b: 0.6830188, a: 1}
       m_ColorMultiplier: 0
       m_FadeDuration: 0
+  stayFocusOnPressed: 1
   OnPress:
     m_PersistentCalls:
       m_Calls: []

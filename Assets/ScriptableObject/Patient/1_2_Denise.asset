@@ -28,6 +28,7 @@ MonoBehaviour:
   - name: IADL
     value: TBD
   medicalHistory: "N\xE9o mammaire en r\xE9mission, allergie aux crustac\xE9s."
+  descriptionLevel: Pas de description.
   steps:
   - type: 0
     contextDescription: 

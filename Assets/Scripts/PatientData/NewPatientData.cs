@@ -29,9 +29,12 @@ namespace Assets.Scripts.PatientData
         [Header("Medical History")]
         [TextArea]
         public string medicalHistory;
+        
+        [TextArea, Header("Description level")] public string descriptionLevel;
 
         [Header("Algoritm steps")]
         public List<AlgoStep> steps;
+
     }
 
     [System.Serializable]

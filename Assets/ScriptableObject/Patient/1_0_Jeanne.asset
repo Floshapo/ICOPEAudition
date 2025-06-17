@@ -30,6 +30,7 @@ MonoBehaviour:
     value: 8/8
   medicalHistory: "N\xE9o mammaire en r\xE9mission, a\xE9rateurs transtympaniques
     dans l'enfance."
+  descriptionLevel: Aba
   steps:
   - type: 0
     contextDescription: 
