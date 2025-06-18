@@ -461,10 +461,6 @@ namespace Assets.Scripts
                 _MainData.nbGameSession = 0; // Set the number of session game to 0
                 _levelRecords = _MainData.levelRecords;
 
-                foreach (var keyValue in _levelRecords)
-                {
-                    _patientCaseRecords = keyValue.Value.patientCaseRecords;
-                }
 
                 LevelState lastLevelPlayed = _MainData.levelRecords.Keys.Last();
                 var lastPatientPlayed = _MainData.levelRecords[lastLevelPlayed].patientCaseRecords.Count - 1; // WARNING ...
