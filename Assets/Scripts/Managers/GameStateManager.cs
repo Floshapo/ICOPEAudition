@@ -140,7 +140,7 @@ namespace Assets.Scripts.Managers
                 currentPatientCase = PatientCase.PATIENT_0; // Reset patient case
                 currentLevel++;
                 // Clear patient case records 
-                GameManager.Instance.GameData.ClearPatientCaseRecordsOnNextLevel();
+                //GameManager.Instance.GameData.ClearPatientCaseRecordsOnNextLevel();
                 
                 NextLevel();
             }

@@ -236,8 +236,12 @@ namespace Assets.Scripts
         /// patient does not exist, the method may log an error and return an undefined value.</returns>
         public PatientCaseRecords GetPatientCaseRecords(string name)
         {
-            if (!_patientCaseRecords.ContainsKey(name)) Debug.LogError($"Patient '{name}' not found.");
-            return _patientCaseRecords[name];
+            Debug.Log("HERE");
+            if (!_patientCaseRecords.ContainsKey(name))
+            {
+                Debug.LogError($"Patient '{name}' not found.");
+            }
+                return _patientCaseRecords[name];
         }
 
         /// <summary>

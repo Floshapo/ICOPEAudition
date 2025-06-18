@@ -510,7 +510,7 @@ MonoBehaviour:
     contextDescription: 
     questionnaireData: {fileID: 0}
     predefinedAnwser: []
-    spriteEarExams: {fileID: 0}
+    spriteEarExams: {fileID: -3945972827715425317, guid: bf736be000460ec48b32643e9fc2c3e4, type: 3}
     hasDiagnosticPhase: 1
     diagnosticPhase:
       questionText: Quel est votre diagnostic ?
