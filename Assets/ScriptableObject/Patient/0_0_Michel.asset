@@ -400,7 +400,7 @@ MonoBehaviour:
           cause sous jacente d\u2019asym\xE9trie auditive). Mais le diagnostic du
           BDC resterait \u2026 clinique !\r\n\r"
         sprites:
-        - {fileID: 21300000, guid: 5e637654893fb8542a76fc8012435b43, type: 3}
+        - {fileID: 21300000, guid: f503c7a4e7193c945b6f71187b1b4708, type: 3}
     hasActionPhase: 1
     actionPhase:
       questionText: Ques faites-vous ?
@@ -437,7 +437,7 @@ MonoBehaviour:
           l\u2019acoum\xE9trie au diapason, autrement les r\xE9ponses seront en lien
           avec la surdit\xE9 occasionn\xE9e par ce BDC\r\n\r\n"
         sprites:
-        - {fileID: 21300000, guid: 5e637654893fb8542a76fc8012435b43, type: 3}
+        - {fileID: 21300000, guid: f503c7a4e7193c945b6f71187b1b4708, type: 3}
     IsOptional: 0
     isTerminatingStep: 0
   - type: 6

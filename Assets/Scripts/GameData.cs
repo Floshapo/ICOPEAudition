@@ -478,13 +478,13 @@ namespace Assets.Scripts
             if (File.Exists(path))
             {
                 
-                GameManager.Instance.GameData._MainData = XmlManager.LoadGameData(Path.Combine(Application.streamingAssetsPath, path));
-                GameManager.Instance.GameData._MainData.nbGameSession = 0; // Set the number of session game to 0
-                GameManager.Instance.GameData._levelRecords = _MainData.levelRecords;
+                _MainData = XmlManager.LoadGameData(Path.Combine(Application.streamingAssetsPath, path));
+                _MainData.nbGameSession = 0; // Set the number of session game to 0
+                _levelRecords = _MainData.levelRecords;
 
                 foreach (var keyValue in _levelRecords)
                 {
-                    GameManager.Instance.GameData._patientCaseRecords = keyValue.Value.patientCaseRecords;
+                    _patientCaseRecords = keyValue.Value.patientCaseRecords;
                 }
 
                 LevelState lastLevelPlayed = _MainData.levelRecords.Keys.Last();

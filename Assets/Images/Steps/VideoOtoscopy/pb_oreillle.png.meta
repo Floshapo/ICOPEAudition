@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      pb_oreillle_0: 7734625416832987213
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
