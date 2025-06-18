@@ -239,7 +239,6 @@ namespace Assets.Scripts.Managers
                 return;
             }
             Instance = this;
-            DontDestroyOnLoad(gameObject);
 
             GameStateManager = GetComponent<GameStateManager>();
             GameData = GetComponent<GameData>();
