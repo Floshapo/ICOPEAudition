@@ -24,11 +24,12 @@ MonoBehaviour:
     (\xE9tape 1), qui met en \xE9vidence un score pathologique."
   autonomies:
   - name: ADL
-    value: TBD
+    value: 6/6
   - name: IADL
-    value: TBD
+    value: 8/8
   medicalHistory: "N\xE9o mammaire en r\xE9mission, allergie aux crustac\xE9s."
-  descriptionLevel: Pas de description.
+  descriptionLevel: "Denise Roux, ancienne cheffe cuisini\xE8re, vient vous voir
+    apr\xE8s avoir \xE9t\xE9 adress\xE9e par son audioproth\xE9siste."
   steps:
   - type: 0
     contextDescription: 

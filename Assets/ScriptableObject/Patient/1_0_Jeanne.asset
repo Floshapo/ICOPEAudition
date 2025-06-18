@@ -30,7 +30,9 @@ MonoBehaviour:
     value: 8/8
   medicalHistory: "N\xE9o mammaire en r\xE9mission, a\xE9rateurs transtympaniques
     dans l'enfance."
-  descriptionLevel: Aba
+  descriptionLevel: "Jeanne Durand est votre premi\xE8re patiente. Vous devrez analyser
+    ses sympt\xF4mes et ses r\xE9ponses en parcourant l'algorithme vu dans le cas
+    'Tutoriel'."
   steps:
   - type: 0
     contextDescription: 

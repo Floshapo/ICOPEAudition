@@ -24,11 +24,12 @@ MonoBehaviour:
     avec H\xF6ra : patho, gestion de l\u2019alerte."
   autonomies:
   - name: ADL
-    value: '?'
+    value: 6/6
   - name: IADL
-    value: '?'
-  medicalHistory: '?'
-  descriptionLevel: Disco music
+    value: 8/8
+  medicalHistory: 
+  descriptionLevel: "\xC9lisabeth Martin est votre deuxi\xE8me patiente de ce niveau
+    'Facile'. Analysez ses sympt\xF4mes et ses r\xE9ponses en parcourant l'algorithme."
   steps:
   - type: 0
     contextDescription: 
