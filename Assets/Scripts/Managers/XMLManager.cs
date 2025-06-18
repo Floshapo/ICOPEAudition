@@ -117,10 +117,11 @@ namespace Assets.Scripts.Managers
             return gameData;
         }
 
-        public static TutorialEntry LoadTutoriaDataByID(string path, string stepName, int id)
+        public static TutorialEntry LoadTutoriaDataByID(TextAsset path, string stepName, int id)
         {
+            Debug.Log(path.text);
             XmlDocument doc = new XmlDocument();
-            doc.Load(path);
+            doc.LoadXml(path.text);
 
             XmlNode node = doc.DocumentElement;
             if (node == null || node.Name != "Tutorial") throw new Exception("Invalid XML format.");

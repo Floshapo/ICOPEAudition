@@ -436,7 +436,7 @@ namespace Assets.Scripts
 
             _MainData.levelRecords = _levelRecords;
 
-            XmlManager.SaveToXml(_MainData, Path.Combine(Application.streamingAssetsPath, path), "GameData");
+            // XmlManager.SaveToXml(_MainData, Path.Combine(Application.streamingAssetsPath, path), "GameData");
         }
 
         public bool FisrtGameSession()
@@ -475,7 +475,7 @@ namespace Assets.Scripts
             InitializeRecords();
             path = Path.Combine(Application.streamingAssetsPath, path);
             // try to get last session time on web request
-            if (File.Exists(path))
+            /*if (File.Exists(path))
             {
                 
                 _MainData = XmlManager.LoadGameData(Path.Combine(Application.streamingAssetsPath, path));
@@ -494,8 +494,8 @@ namespace Assets.Scripts
             }
             else
             {
-                _MainData = new MainData();
-            }
+            }*/
+            _MainData = new MainData();
         }
     }
 }

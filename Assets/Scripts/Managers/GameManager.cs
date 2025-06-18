@@ -8,7 +8,7 @@ using Assets.Scripts.PatientData;
 namespace Assets.Scripts.Managers
 {
     [RequireComponent(typeof(GameStateManager))]
-    [RequireComponent(typeof(TelemetryManager))]
+    //[RequireComponent(typeof(TelemetryManager))]
     [RequireComponent(typeof(AudioManager))]
     [RequireComponent(typeof(PatientAnimation))]
     public class GameManager : MonoBehaviour
@@ -21,7 +21,7 @@ namespace Assets.Scripts.Managers
         public static GameManager Instance;
         public GameStateManager GameStateManager { get; private set; }
         public GameData GameData { get; set; }
-        public TelemetryManager TelemetryManager { get; private set; }
+        //public TelemetryManager TelemetryManager { get; private set; }
         public AudioManager AudioManager { get; private set; }
         public PatientAnimation PatientAnimation { get; private set; }
         public StepManagerN StepManagerN { get; private set; }
@@ -62,8 +62,8 @@ namespace Assets.Scripts.Managers
 
         [Header("Tutoriel")]
         [SerializeField] private bool _isTutorialEnable = true; // Par défault true car on suppose que le joueur y joue pour la première fois.
-        public readonly string _pathXmlFile = "Assets/Resources/XML_Text/Tutorial.xml";
-        private readonly string _pathXsdFile = "Assets/Resources/XML_Text/TutorialSchema.xsd";
+        public readonly string _pathXmlFile = "Assets/Resources/Data/Tutorial.xml";
+        private readonly string _pathXsdFile = "Assets/Resources/Data/TutorialSchema.xsd";
         [Header("Money")]
         [SerializeField] private int _money = 20;
 
@@ -239,7 +239,7 @@ namespace Assets.Scripts.Managers
             GameData = GetComponent<GameData>();
             StepManagerN = GetComponent<StepManagerN>();
 
-            TelemetryManager = GetComponent<TelemetryManager>();
+            //TelemetryManager = GetComponent<TelemetryManager>();
             AudioManager = GetComponent<AudioManager>();
             PatientAnimation = GetComponent<PatientAnimation>();
 

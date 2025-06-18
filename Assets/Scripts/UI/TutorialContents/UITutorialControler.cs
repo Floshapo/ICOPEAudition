@@ -41,16 +41,21 @@ namespace Assets.Scripts.UI.TutorialContents
         /// <param name="idSteps">The ids of the current text to load.</param>
         private void SetTexts(string nameStep, int idSteps)
         {
-            TutorialEntry tutoEntry = XmlManager.LoadTutoriaDataByID(GameManager.Instance._pathXmlFile, nameStep, idSteps);
-            if (tutoEntry != null)
+            Debug.Log("Here");
+            var pathToXml = Resources.Load<TextAsset>($"Data/Tutorial");
+            if ( pathToXml != null )
             {
-                _intituleText.text = tutoEntry.Intitule;
-                _Text.text = tutoEntry.Text;
-            }
-            else
-            {
-                GameManager.Instance.SetTutorialUI();
-                indexText = 0;
+                TutorialEntry tutoEntry = XmlManager.LoadTutoriaDataByID(pathToXml, nameStep, idSteps);
+                if (tutoEntry != null)
+                {
+                    _intituleText.text = tutoEntry.Intitule;
+                    _Text.text = tutoEntry.Text;
+                }
+                else
+                {
+                    GameManager.Instance.SetTutorialUI();
+                    indexText = 0;
+                }
             }
         }
 

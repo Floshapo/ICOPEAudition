@@ -3465,7 +3465,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7717069421121553284}
   - component: {fileID: 2022124782820224094}
-  - component: {fileID: 1511701388075905951}
   - component: {fileID: 3317090486611199034}
   - component: {fileID: 5751518973796607014}
   - component: {fileID: 4869231743824726053}
@@ -3522,31 +3521,6 @@ MonoBehaviour:
   _tutorialPanel: {fileID: 6463695962743370254}
   _elderPerson: {fileID: 3415924956142607156}
   folderDivider: {fileID: 2885699892146042131}
---- !u!114 &1511701388075905951
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6532123887182179398}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e916080211dc6f41bb5df0fa76366cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  serverURL: https://icope.rodriguez-vincent.fr/
-  datasManagerPHP: datas_manager.php
-  getDatasPHP: get_datas.php
-  uuidPHP: uuid.php
-  nbWins: 0
-  nbGames: 0
-  gameTime: 0
-  lastSessionTime: 0
-  answers:
-  - 
-  - 
-  - 
-  - 
 --- !u!114 &3317090486611199034
 MonoBehaviour:
   m_ObjectHideFlags: 0
