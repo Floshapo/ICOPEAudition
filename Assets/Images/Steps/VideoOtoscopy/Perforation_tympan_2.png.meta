@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 4278f3a79a7b05e40b3dfa049fe86d95
+guid: 6751ff46d80eb624ca7a0619b16be793
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8232851034218592049
-    second: Perforation_tympan_2_0
+      213: -4662591224280970991
+    second: Perforation_tympan_2 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -72,10 +72,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 256
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Perforation_tympan_2_0
+      name: Perforation_tympan_2 1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 287
-        height: 228
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fc881b89a990fbd80800000000000000
-      internalID: -8232851034218592049
+      spriteID: 11901e72cf52b4fb0800000000000000
+      internalID: -4662591224280970991
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Perforation_tympan_2_0: -8232851034218592049
+      Perforation_tympan_2 1_0: -4662591224280970991
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

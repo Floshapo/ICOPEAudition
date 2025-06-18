@@ -286,7 +286,7 @@ MonoBehaviour:
     contextDescription: "\r"
     questionnaireData: {fileID: 0}
     predefinedAnwser: []
-    spriteEarExams: {fileID: 21300000, guid: f4e141a2e0556b14c8f81bfe3032f699, type: 3}
+    spriteEarExams: {fileID: 21300000, guid: 66ab745270a49f948bba06cb857acfbb, type: 3}
     hasDiagnosticPhase: 1
     diagnosticPhase:
       questionText: Quel est votre diagnostic ?
@@ -300,29 +300,29 @@ MonoBehaviour:
           \xE0 l\u2019otoscopie. Il existe une douleur associ\xE9e, souvent de la
           fi\xE8vre.\r\n"
         sprites:
-        - {fileID: 21300000, guid: 807b0a8b29762cd45976766c67852430, type: 3}
-        - {fileID: 21300000, guid: 3e0583c3c64c5524482e527342721996, type: 3}
+        - {fileID: 21300000, guid: ab0791b59991394478c7e63451d833f5, type: 3}
+        - {fileID: 21300000, guid: b5ca7212c3dd1014685c70d76ca23d6e, type: 3}
       - answerText: "Il s\u2019agit d\u2019une perforation tympanique."
         isCorrect: 0
         correctionText: "On peut suivre l\u2019annulus sur toute sa circonf\xE9rence,
           il n\u2019existe pas de perforation de la membrane.\r\n\r\n"
         sprites:
-        - {fileID: 21300000, guid: 55644519953532a4ba6f5578e67fe1c4, type: 3}
-        - {fileID: 21300000, guid: 4278f3a79a7b05e40b3dfa049fe86d95, type: 3}
+        - {fileID: 21300000, guid: c8721d873aaf0b442a563e92ea23f282, type: 3}
+        - {fileID: 21300000, guid: 6751ff46d80eb624ca7a0619b16be793, type: 3}
       - answerText: "Il s\u2019agit d\u2019un bouchon de c\xE9rumen."
         isCorrect: 0
         correctionText: 
         sprites:
-        - {fileID: 21300000, guid: 5e637654893fb8542a76fc8012435b43, type: 3}
-        - {fileID: 21300000, guid: bce62345d7a49084e85cce8e98152ad8, type: 3}
+        - {fileID: 21300000, guid: f503c7a4e7193c945b6f71187b1b4708, type: 3}
+        - {fileID: 21300000, guid: 074d65b9d59894e45a6ce7148c6c22f1, type: 3}
       - answerText: "Il s\u2019agit d\u2019un tympan normal."
         isCorrect: 1
         correctionText: "Un tympan normal est classiquement transparent, de couleur
           grise, bien tendu autour de la circonf\xE9rence (annulus), que fait le
           fond du Conduit Auditif Externe.\r"
         sprites:
-        - {fileID: 21300000, guid: f4e141a2e0556b14c8f81bfe3032f699, type: 3}
-        - {fileID: 21300000, guid: e86947662b5480d48b4a835c7d65cf66, type: 3}
+        - {fileID: 21300000, guid: 66ab745270a49f948bba06cb857acfbb, type: 3}
+        - {fileID: 21300000, guid: c61eaa268f3e45b4ebccd891cd90b737, type: 3}
     hasActionPhase: 1
     actionPhase:
       questionText: Ques faites-vous ?
@@ -333,8 +333,8 @@ MonoBehaviour:
           il faut continuer son \xE9valuation ! la normalit\xE9 de l'examen otoscopique
           n'est en rien rassurante vis \xE0 vis du statut auditif du patient."
         sprites:
-        - {fileID: 21300000, guid: 807b0a8b29762cd45976766c67852430, type: 3}
-        - {fileID: 21300000, guid: 3e0583c3c64c5524482e527342721996, type: 3}
+        - {fileID: 21300000, guid: 66ab745270a49f948bba06cb857acfbb, type: 3}
+        - {fileID: 21300000, guid: c61eaa268f3e45b4ebccd891cd90b737, type: 3}
       - answerText: Je continue le parcours audition et lui fait passer le test de
           Weber.
         isCorrect: 1

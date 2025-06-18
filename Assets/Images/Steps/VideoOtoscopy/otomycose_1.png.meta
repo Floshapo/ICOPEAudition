@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: eaf07db2bd7d39c46905abceb4b8b11b
+guid: 34dec7c2e75b3194bb48d0f8ff3826e9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3949590900176854903
-    second: otomycose_1_0
+      213: 7905692664750790676
+    second: otomycose_1 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,7 +126,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: otomycose_1_0
+      name: otomycose_1 1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 980e7da800c3039c0800000000000000
-      internalID: -3949590900176854903
+      spriteID: 418d1e9a799a6bd60800000000000000
+      internalID: 7905692664750790676
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      otomycose_1_0: -3949590900176854903
+      otomycose_1 1_0: 7905692664750790676
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

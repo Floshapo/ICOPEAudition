@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 3e0583c3c64c5524482e527342721996
+guid: b5ca7212c3dd1014685c70d76ca23d6e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4452311361001823935
-    second: Otite_2_0
+      213: 4193033178155053081
+    second: Otite_2 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -72,10 +72,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 256
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Otite_2_0
+      name: Otite_2 1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 315
-        height: 228
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 141ec0218663632c0800000000000000
-      internalID: -4452311361001823935
+      spriteID: 910fb5bb575a03a30800000000000000
+      internalID: 4193033178155053081
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Otite_2_0: -4452311361001823935
+      Otite_2 1_0: 4193033178155053081
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

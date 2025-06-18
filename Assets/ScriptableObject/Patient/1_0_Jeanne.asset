@@ -184,7 +184,7 @@ MonoBehaviour:
     contextDescription: 
     questionnaireData: {fileID: 0}
     predefinedAnwser: []
-    spriteEarExams: {fileID: 21300000, guid: 963c774408e45c041ac21529e839aa52, type: 3}
+    spriteEarExams: {fileID: 21300000, guid: 074d65b9d59894e45a6ce7148c6c22f1, type: 3}
     hasDiagnosticPhase: 1
     diagnosticPhase:
       questionText: Quel est votre diagnostic ?
@@ -198,15 +198,15 @@ MonoBehaviour:
           habituellement retrouv\xE9s \xE0 l\u2019otoscopie. Il existe une douleur
           associ\xE9e, souvent de la fi\xE8vre."
         sprites:
-        - {fileID: 21300000, guid: 807b0a8b29762cd45976766c67852430, type: 3}
-        - {fileID: 21300000, guid: 3e0583c3c64c5524482e527342721996, type: 3}
+        - {fileID: 21300000, guid: ab0791b59991394478c7e63451d833f5, type: 3}
+        - {fileID: 21300000, guid: b5ca7212c3dd1014685c70d76ca23d6e, type: 3}
       - answerText: "Il s\u2019agit d\u2019une perforation tympanique."
         isCorrect: 0
         correctionText: "On peut suivre l\u2019annulus sur toute sa circonf\xE9rence,
           il n\u2019existe pas de perforation de la membrane."
         sprites:
-        - {fileID: 21300000, guid: 55644519953532a4ba6f5578e67fe1c4, type: 3}
-        - {fileID: 21300000, guid: 4278f3a79a7b05e40b3dfa049fe86d95, type: 3}
+        - {fileID: 21300000, guid: c8721d873aaf0b442a563e92ea23f282, type: 3}
+        - {fileID: 21300000, guid: 6751ff46d80eb624ca7a0619b16be793, type: 3}
       - answerText: "Il s\u2019agit d\u2019un bouchon de c\xE9rumen."
         isCorrect: 1
         correctionText: "Lors de l\u2019examen, on observe une masse brun\xE2tre,
@@ -214,16 +214,16 @@ MonoBehaviour:
           du tympan ni des rep\xE8res anatomiques habituels. Ces \xE9l\xE9ments sont
           caract\xE9ristiques d\u2019un bouchon de c\xE9rumen."
         sprites:
-        - {fileID: 21300000, guid: 5e637654893fb8542a76fc8012435b43, type: 3}
-        - {fileID: 21300000, guid: bce62345d7a49084e85cce8e98152ad8, type: 3}
+        - {fileID: 21300000, guid: 074d65b9d59894e45a6ce7148c6c22f1, type: 3}
+        - {fileID: 21300000, guid: f503c7a4e7193c945b6f71187b1b4708, type: 3}
       - answerText: "Il s\u2019agit d\u2019un tympan normal."
         isCorrect: 0
         correctionText: "Un tympan normal est classiquement transparent, de couleur
           grise, bien tendu autour de la circonf\xE9rence (annulus), que fait le
           fond du Conduit Auditif Externe."
         sprites:
-        - {fileID: 21300000, guid: f4e141a2e0556b14c8f81bfe3032f699, type: 3}
-        - {fileID: 21300000, guid: e86947662b5480d48b4a835c7d65cf66, type: 3}
+        - {fileID: 21300000, guid: 66ab745270a49f948bba06cb857acfbb, type: 3}
+        - {fileID: 21300000, guid: c61eaa268f3e45b4ebccd891cd90b737, type: 3}
     hasActionPhase: 1
     actionPhase:
       questionText: Ques faites-vous ?
@@ -254,7 +254,7 @@ MonoBehaviour:
     contextDescription: 
     questionnaireData: {fileID: 0}
     predefinedAnwser: []
-    spriteEarExams: {fileID: 7734625416832987213, guid: bfbd27f3634caf348bad9532b12893c1, type: 3}
+    spriteEarExams: {fileID: 7734625416832987213, guid: c4249b8004b2a0746ae11898619a721d, type: 3}
     hasDiagnosticPhase: 1
     diagnosticPhase:
       questionText: Quel est votre diagnostic ?
@@ -292,7 +292,7 @@ MonoBehaviour:
           du Conduit Auditif Externe comme l\u2019ecz\xE9ma ou des l\xE9sions par
           introduction r\xE9p\xE9t\xE9es de corps \xE9trangers."
         sprites:
-        - {fileID: -3560021902792600746, guid: ec92006e777d48e44a831c991a7e131e, type: 3}
+        - {fileID: 21300000, guid: 96c0d950e23d5e349a5b22a53e75d960, type: 3}
       - answerText: "Ces l\xE9sions de la membrane tympaniques sont corr\xE9l\xE9es
           \xE0 l\u2019avanc\xE9e en \xE2ge. On les retrouve fr\xE9quemment chez les
           presbyacousiques."

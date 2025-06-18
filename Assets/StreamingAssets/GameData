@@ -1,9 +1,9 @@
 <GameData>
   <totGames>1</totGames>
-  <gameTime>42,37719</gameTime>
+  <gameTime>38,16548</gameTime>
   <nbGameSession>1</nbGameSession>
   <sessionTimeQueue>
-    <Item>42,37719</Item>
+    <Item>38,16548</Item>
   </sessionTimeQueue>
   <levelRecords>
     <LEVEL_0>
@@ -44,29 +44,32 @@
               <succeeded>True</succeeded>
             </Questionnary_0>
             <Otoscopy_0>
-              <diagnoticsAttempt>1</diagnoticsAttempt>
-              <actionAttempt>1</actionAttempt>
+              <diagnoticsAttempt>4</diagnoticsAttempt>
+              <actionAttempt>4</actionAttempt>
               <diagnosticAnswer>
+                <Item>Il s’agit d’un bouchon de cérumen.</Item>
+                <Item>Il s’agit d’une perforation tympanique.</Item>
+                <Item>Il s’agit d’une otite moyenne aiguë.</Item>
                 <Item>Il s’agit d’un tympan normal.</Item>
               </diagnosticAnswer>
               <actionAnswer>
+                <Item>Je le laisse repartir chez lui.</Item>
+                <Item>Je l’envoi aux urgences.</Item>
+                <Item>Je prescris une prothèse auditive.</Item>
                 <Item>Je continue le parcours audition et lui fait passer le test de Weber.</Item>
               </actionAnswer>
-              <succeeded>True</succeeded>
+              <succeeded>False</succeeded>
             </Otoscopy_0>
             <Weber_test_0>
-              <diagnoticsAttempt>3</diagnoticsAttempt>
-              <actionAttempt>2</actionAttempt>
+              <diagnoticsAttempt>1</diagnoticsAttempt>
+              <actionAttempt>1</actionAttempt>
               <diagnosticAnswer>
-                <Item>Ses réponses révèlent une surdité de perception.</Item>
-                <Item>Ses réponses révèlent une surdité de transmission.</Item>
                 <Item>Ses réponses ne révèlent pas d’anomalie.</Item>
               </diagnosticAnswer>
               <actionAnswer>
-                <Item>Je le laisse repartir et lui propose de refaire ICOPE dans 6 mois.</Item>
                 <Item>Je continue le parcours audition et lui fait passer le test HHIE-S.</Item>
               </actionAnswer>
-              <succeeded>False</succeeded>
+              <succeeded>True</succeeded>
             </Weber_test_0>
             <HHIES_test_0>
               <diagnoticsAttempt>1</diagnoticsAttempt>
@@ -80,11 +83,10 @@
               <succeeded>True</succeeded>
             </HHIES_test_0>
             <Audiometry_0>
-              <diagnoticsAttempt>3</diagnoticsAttempt>
+              <diagnoticsAttempt>2</diagnoticsAttempt>
               <actionAttempt>1</actionAttempt>
               <diagnosticAnswer>
                 <Item>Le score montre une audition normale.</Item>
-                <Item>Le score montre une surdité de transmission.</Item>
                 <Item>Le score montre une surdité de perception.</Item>
               </diagnosticAnswer>
               <actionAnswer>
@@ -108,7 +110,7 @@
           <numberStepSucceed>5</numberStepSucceed>
           <numberStepFailed>2</numberStepFailed>
           <successRate>71,42857</successRate>
-          <timePassed>32,22094</timePassed>
+          <timePassed>37,91558</timePassed>
         </Michel>
       </patientCaseRecords>
     </LEVEL_0>

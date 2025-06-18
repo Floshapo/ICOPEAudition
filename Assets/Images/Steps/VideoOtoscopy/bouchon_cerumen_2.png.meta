@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: bce62345d7a49084e85cce8e98152ad8
+guid: f051c218c98bb484ba7775d21b9ad792
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2175439791292258135
-    second: bouchon_cerumen_2_0
+      213: -8219933437575208986
+    second: bouchon_cerumen_2 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bouchon_cerumen_2_0
+      name: bouchon_cerumen_2 1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 322
-        height: 241
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7579936d6f6b03e10800000000000000
-      internalID: 2175439791292258135
+      spriteID: 6ef59ffe61eeced80800000000000000
+      internalID: -8219933437575208986
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      bouchon_cerumen_2_0: 2175439791292258135
+      bouchon_cerumen_2 1_0: -8219933437575208986
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

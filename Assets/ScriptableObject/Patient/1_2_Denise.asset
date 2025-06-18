@@ -277,7 +277,7 @@ MonoBehaviour:
     contextDescription: 
     questionnaireData: {fileID: 0}
     predefinedAnwser: []
-    spriteEarExams: {fileID: 196858698129614350, guid: c623efc36d2df4c42896de0a84fe84cb, type: 3}
+    spriteEarExams: {fileID: 21300000, guid: 3baedf2dff3bdcd4194820c202086473, type: 3}
     hasDiagnosticPhase: 1
     diagnosticPhase:
       questionText: Quel est votre diagnostic ?
@@ -290,8 +290,8 @@ MonoBehaviour:
           traitant \xE0 la fin du traitement. Il sera reconvoqu\xE9 pour une nouvelle
           \xE9valuation \xE0 distance."
         sprites:
-        - {fileID: 21300000, guid: 75f7e9e0d3a3d124785734d8375ba3b2, type: 3}
-        - {fileID: 21300000, guid: eaf07db2bd7d39c46905abceb4b8b11b, type: 3}
+        - {fileID: 21300000, guid: 96c0d950e23d5e349a5b22a53e75d960, type: 3}
+        - {fileID: 21300000, guid: 34dec7c2e75b3194bb48d0f8ff3826e9, type: 3}
       - answerText: "Il s\u2019agit d\u2019un bouchon de c\xE9rumen, Je propose de
           proc\xE9der \xE0 l\u2019ablation du Bouchon en utilisation la m\xE9thode
           de l\u2019irrigation."
@@ -340,7 +340,7 @@ MonoBehaviour:
     contextDescription: 
     questionnaireData: {fileID: 0}
     predefinedAnwser: []
-    spriteEarExams: {fileID: 21300000, guid: e86947662b5480d48b4a835c7d65cf66, type: 3}
+    spriteEarExams: {fileID: 21300000, guid: 66ab745270a49f948bba06cb857acfbb, type: 3}
     hasDiagnosticPhase: 0
     diagnosticPhase:
       questionText: Quel est votre diagnostic ?
