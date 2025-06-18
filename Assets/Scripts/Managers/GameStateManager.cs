@@ -47,8 +47,8 @@ namespace Assets.Scripts.Managers
                 currInstance.LoadGameMenu();
                 // Set level 
                 SetLevel(currentLevel);
-                // Set Patient case
-                SetPatientCase(currentPatientCase, currInstance.LevelsData.patientByLevel[(int)currentLevel].patientsCase[(int)currentPatientCase]);
+                // Set Patient Case
+                SetPatientCase(currentPatientCase, patientCaseData.patientsCase[(int)currentPatientCase]);
             }
             else
             {
@@ -111,6 +111,7 @@ namespace Assets.Scripts.Managers
             if ((int)currentLevel < LevelsData.patientByLevel.Count)
             {
                 SetLevel(currentLevel);
+                SetPatientCase(currentPatientCase, patientCaseData.patientsCase[(int)currentPatientCase]);
                 //Return to game menu
                 ReturnToGameMenu();
             }
@@ -139,9 +140,7 @@ namespace Assets.Scripts.Managers
                 Debug.Log("Tous les cas patient sont terminer! Next Level !");
                 currentPatientCase = PatientCase.PATIENT_0; // Reset patient case
                 currentLevel++;
-                // Clear patient case records 
-                //GameManager.Instance.GameData.ClearPatientCaseRecordsOnNextLevel();
-                
+                // Clear patient case records                 
                 NextLevel();
             }
         }
@@ -158,7 +157,7 @@ namespace Assets.Scripts.Managers
             Debug.Log("Patient completed ! ");
             // Saving player data
             SavePlayerData();
-            // Load resume screen - Same
+            // Load resume screen
             GameManager.Instance.LoadScore(patientData.fisrtName);
         }
 

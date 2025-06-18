@@ -141,12 +141,7 @@ namespace Assets.Scripts.Managers
             ClearScreen();
             _mainMenu.SetActive(true);
         }
-
-        // Change tipsPanel is disable -> tips will be a glossaire
-        // Now ask player for they fisrt time (in the current session, todo) if they want activate the assistant.
-
-        // click jouer -> load progression joueur / pas progression "0" -> load la fiche patient
-
+        // LOAD GAME MENU
         internal void LoadGameMenu()
         {
             AudioManager.PlaySFX("ambiant", "AMBIANT");

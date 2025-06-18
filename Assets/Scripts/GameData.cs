@@ -33,26 +33,48 @@ namespace Assets.Scripts
         public struct PatientCaseRecords
         {
             // TOT Data on the current patient
-            public int nbAttempt { get; set; } // Number of attempts for this patient
-            public int totDiagnosticCorrect { get; set; }
-            public int totDiagnosticError { get; set; } // length of diagnosticError
-            public int totActionCorrect { get; set; }
-            public int totActionError { get; set; } // length of actionError
+            public int nbAttempt;// Number of attempts for this patient
+            public int totDiagnosticCorrect;
+            public int totDiagnosticError; // length of diagnosticError
+            public int totActionCorrect;
+            public int totActionError; // length of actionError
             public int totError => totActionError + totDiagnosticError; // totActionError + totDiagnosticError
-            public int totStepSucceed { get; set; } // Number of succeeded (count number of succeeded in StepRecord)
-            public int totStepFailed { get; set; } // Number of failed (count number of failed in StepRecord)
+            public int totStepSucceed; // Number of succeeded (count number of succeeded in StepRecord)
+            public int totStepFailed; // Number of failed (count number of failed in StepRecord)
 
             // data we want the show for the player for his last attempt
-            public int numberDiagCorrect { get; set; }
-            public int numberDiagIncorrect { get; set; }
-            public int numberActionCorrect { get; set; }
-            public int numberActionIncorrect { get; set; }
-            public int numberStepSucceed { get; set; }
-            public int numberStepFailed { get; set; }
+            public int numberDiagCorrect;
+            public int numberDiagIncorrect;
+            public int numberActionCorrect;
+            public int numberActionIncorrect;
+            public int numberStepSucceed;
+            public int numberStepFailed;
             public float successRate => (numberStepSucceed + numberStepFailed) == 0 ? 0f : (float)numberStepSucceed * 100 / ((float)numberStepSucceed + (float)numberStepFailed);
-            
-            public float timePassed { get; set; } // Time spent on the level
+
+            public float timePassed; // Time spent on the level
             public Dictionary<string, StepRecords> stepRecords; // StepRecords of the level {Step name, Steps}
+
+            public PatientCaseRecords(Dictionary<string, StepRecords> stepRecords)
+            {
+                this.nbAttempt = 0;
+                this.totDiagnosticCorrect = 0;
+                this.totDiagnosticError = 0;
+                this.totActionCorrect = 0;
+                this.totActionError = 0;
+
+                this.totStepSucceed = 0;
+                this.totStepFailed = 0;
+                
+                this.numberDiagCorrect = 0;
+                this.numberDiagIncorrect = 0;
+                this.numberActionCorrect = 0;
+                this.numberActionIncorrect = 0;
+                this.numberStepSucceed = 0;
+                this.numberStepFailed = 0;
+                this.timePassed = 0f;
+
+                this.stepRecords = stepRecords;
+            }
         }
 
         public struct LevelRecords
@@ -220,12 +242,11 @@ namespace Assets.Scripts
         /// <param name="patientName">The name of the patient for whom the case records are being set. Cannot be null or empty.</param>
         public void SetPatientCaseRecorder(string patientName)
         {
+            foreach(var a in _patientCaseRecords)
+            {
+                Debug.Log($"Key: {a.Key}");
+            }
             if (!_patientCaseRecords.ContainsKey(patientName)) _patientCaseRecords[patientName] = new PatientCaseRecords();
-        }
-
-        public void ClearPatientCaseRecordsOnNextLevel()
-        {
-            _patientCaseRecords.Clear();
         }
 
         /// <summary>
@@ -236,12 +257,11 @@ namespace Assets.Scripts
         /// patient does not exist, the method may log an error and return an undefined value.</returns>
         public PatientCaseRecords GetPatientCaseRecords(string name)
         {
-            Debug.Log("HERE");
             if (!_patientCaseRecords.ContainsKey(name))
             {
                 Debug.LogError($"Patient '{name}' not found.");
             }
-                return _patientCaseRecords[name];
+            return _patientCaseRecords[name];
         }
 
         /// <summary>
@@ -295,6 +315,7 @@ namespace Assets.Scripts
         public void SetLevelRecords(LevelState levelState)
         {
             _levelTimer = new TimerData(Time.time);
+            _patientCaseRecords = new Dictionary<string, PatientCaseRecords>();
             if (!_levelRecords.ContainsKey(levelState)) _levelRecords[levelState] = new LevelRecords(0, 0, _patientCaseRecords);
         }
 
@@ -364,7 +385,7 @@ namespace Assets.Scripts
         {
             Step step = (Step)indexStep;
             
-            string key = GetUniqueKeyStep(_stepRecords, step.ToString()); // TODO : Fix this shit 
+            string key = GetUniqueKeyStep(_stepRecords, step.ToString()); 
 
             Dictionary<string, string[]> stringRecords = new Dictionary<string, string[]>();
             
@@ -457,10 +478,14 @@ namespace Assets.Scripts
             if (File.Exists(path))
             {
                 
-                _MainData = XmlManager.LoadGameData(Path.Combine(Application.streamingAssetsPath, path));
-                _MainData.nbGameSession = 0; // Set the number of session game to 0
-                _levelRecords = _MainData.levelRecords;
+                GameManager.Instance.GameData._MainData = XmlManager.LoadGameData(Path.Combine(Application.streamingAssetsPath, path));
+                GameManager.Instance.GameData._MainData.nbGameSession = 0; // Set the number of session game to 0
+                GameManager.Instance.GameData._levelRecords = _MainData.levelRecords;
 
+                foreach (var keyValue in _levelRecords)
+                {
+                    GameManager.Instance.GameData._patientCaseRecords = keyValue.Value.patientCaseRecords;
+                }
 
                 LevelState lastLevelPlayed = _MainData.levelRecords.Keys.Last();
                 var lastPatientPlayed = _MainData.levelRecords[lastLevelPlayed].patientCaseRecords.Count - 1; // WARNING ...
