@@ -5,9 +5,19 @@ using UnityEngine;
 using UnityEngine.UI;
 using static Assets.Scripts.Managers.GameStateManager;
 
+/// <summary>
+/// Manages level selection, patient case buttons, and game start logic in the level selection menu.
+/// </summary>
+/// <remarks>
+/// Handles UI elements for selecting levels and patients, including dynamically instantiating buttons,
+/// updating descriptions, and launching the game with the selected configuration.
+/// </remarks>
 public class LevelSelector : MonoBehaviour
 {
     // buttons, patient name and descriptions per levels
+    /// <summary>
+    /// Container for each level's difficulty button.
+    /// </summary>
     [System.Serializable]
     public class LevelComposition
     {
@@ -25,9 +35,11 @@ public class LevelSelector : MonoBehaviour
     private int currentIndexLevelSelected = 0;
     private int currentIndexPatientCase = 0;
 
+    /// <summary>
+    /// Initializes level selection, default UI state, and button listeners on startup.
+    /// </summary>
     void Start()
     {
-        Debug.Log("Here"); 
         // add listerner to stats button
         startGameButton.onClick.AddListener(LoadPatientCase);
 
@@ -46,6 +58,10 @@ public class LevelSelector : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Activates or deactivates patient-related UI elements (e.g., scroll view and separators).
+    /// </summary>
+    /// <param name="active">Whether to enable or disable the patient UI elements.</param>
     private void ActivePatientUiElements(bool active)
     {
         foreach (GameObject patientElem in patientsList)
@@ -54,12 +70,14 @@ public class LevelSelector : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Changes the selected level and updates UI elements accordingly, such as patient buttons and description.
+    /// </summary>
+    /// <param name="index">Index of the selected level.</param>
     private void ChangeLevel(int index)
     {
         // get level composition
         currentIndexLevelSelected = index;
-
-        Debug.Log($"Button pressed: {currentIndexLevelSelected}");
 
         // Get nb patient case
         int nbPatient = levelsData.patientByLevel[currentIndexLevelSelected].patientsCase.Count;
@@ -81,6 +99,10 @@ public class LevelSelector : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Instantiates and configures patient selection buttons for the selected level.
+    /// </summary>
+    /// <param name="nbPatient">Number of patient cases to display for the selected level.</param>
     private void ShowPatientButtons(int nbPatient)
     {
         int currentPatient = GameManager.Instance.GameStateManager.GetCurrentPatientCase();
@@ -112,29 +134,37 @@ public class LevelSelector : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Updates the description text for the currently selected patient case.
+    /// </summary>
+    /// <param name="indexPatientCase">Index of the selected patient case within the level.</param>
     private void ChangeDescription(int indexPatientCase)
     {
-        Debug.Log($"Current Button patient : {indexPatientCase}");
         currentIndexPatientCase = indexPatientCase;
         string infoLevel = levelsData.patientByLevel[currentIndexLevelSelected].patientsCase[indexPatientCase].descriptionLevel;
         description.text = infoLevel;
     }
 
-    public  void UpdateLevelButton()
+    /// <summary>
+    /// Visually updates the difficulty button for the current level to reflect its selected state.
+    /// </summary>
+    public void UpdateLevelButton()
     {
         int currentLevel = GameManager.Instance.GameStateManager.GetCurrentLevel();
         levelCompos[currentLevel].difficultiesBt.AssignState(ButtonPressDetector.ButtonState.None, true);
     }
 
+    /// <summary>
+    /// Sets the selected level and patient case in the game state and transitions to the game menu.
+    /// </summary>
     // Call on "commencer" button click by player
     private void LoadPatientCase()
     {
-        Debug.Log($"Level selected: {currentIndexLevelSelected}, current patient case selectes {currentIndexPatientCase}");
         // SET Game state level and patient case
-        //GameManager.Instance.GameStateManager.SetLevel((LevelState) currentIndexLevelSelected);
-        //GameManager.Instance.GameStateManager.SetPatientCase((PatientCase)currentIndexPatientCase, levelsData.patientByLevel[currentIndexLevelSelected].patientsCase[currentIndexPatientCase]);
+        GameManager.Instance.GameStateManager.SetLevel((LevelState) currentIndexLevelSelected);
+        GameManager.Instance.GameStateManager.SetPatientCase((PatientCase)currentIndexPatientCase, levelsData.patientByLevel[currentIndexLevelSelected].patientsCase[currentIndexPatientCase]);
         // Re-load game menus (need to change patient sprite)
-        //GameManager.Instance.LoadGameMenu();
+        GameManager.Instance.LoadGameMenu();
     }
 
 }
