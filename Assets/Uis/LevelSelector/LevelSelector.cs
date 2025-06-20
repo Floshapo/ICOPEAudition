@@ -103,7 +103,7 @@ public class LevelSelector : MonoBehaviour
             int bindex = b;
             if (bindex < nbPatient)
             {
-                string name = levelsData.patientByLevel[currentIndexLevelSelected].patientsCase[bindex].fisrtName;
+                string name = levelsData.patientByLevel[currentIndexLevelSelected].patientsCase[bindex].firstName;
                 patientButtonsContainer.transform.GetChild(bindex).GetChild(0).GetComponent<TextMeshProUGUI>().text = name;
                 
                 patientButtonsContainer.transform.GetChild(bindex).GetComponent<ButtonPressDetector>().OnPress.AddListener(delegate { ChangeDescription(bindex); });                

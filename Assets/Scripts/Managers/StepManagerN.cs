@@ -46,7 +46,7 @@ namespace Assets.Scripts.Managers
         [Header("GameObject Image correction")]
         [SerializeField] private Image doctorExpressionsImages;
         
-        // Script
+        // Script of each step display
         private Step1PresentationPatient step1PresentationPatient;
         private Step2WisperTest step2WisperTest;
         private Step3And4Questionnary step4And5Questionnary;
@@ -55,14 +55,17 @@ namespace Assets.Scripts.Managers
         private Step7HhiesTest step7HhiesTest;
         private Step8Audiometrie Step8Audiometrie;
 
+        // Enums
         private enum InteractionState { ISREADING, ISANSWERING, ISCORRECTION};
         private InteractionState interactionState;
 
         private enum AnswerState { DIAGNOSTIC, ACTION }
         private AnswerState answerState;
 
+        // Private class 
         private NewPatientData patientData;
         
+        // Private variables
         private int _indexStep;
         private int _currentDisplay;
         private bool _isDiagnosticValid;
@@ -71,6 +74,11 @@ namespace Assets.Scripts.Managers
 
         private Dictionary<Step, int> mappingDisplays;
 
+        /// <summary>
+        /// Initializes the patient data and resets the step index and display index
+        /// to start fresh for a new patient case.
+        /// </summary>
+        /// <param name="newPatient">The new patient data to initialize.</param>
         public void Initialize(NewPatientData newPatient)
         {
             _indexStep = 0; // reset current step to 0
@@ -78,6 +86,12 @@ namespace Assets.Scripts.Managers
             patientData = newPatient;
         }
 
+        /// <summary>
+        /// Loads the specified step by updating the UI elements and setting the interaction state.
+        /// Clears all previous displays and activates the relevant display based on the current step.
+        /// Resets validation flags and sets the current display index accordingly.
+        /// </summary>
+        /// <param name="currentStep">The step to load and display.</param>
         public void LoadStep(Step currentStep)
         {
             ClearAllDisplay();
@@ -169,7 +183,16 @@ namespace Assets.Scripts.Managers
             SetTextButtonsNavigation();
         }
 
-        // SET TEXT AND INTERACTION 
+        // SET TEXT AND INTERACTION
+        /// <summary>
+        /// Updates the navigation buttons' interactability and text based on the current interaction state.
+        /// - In ISREADING state: disables the return button, enables the confirm/next button with text "Répondre".
+        /// - In ISANSWERING state: enables the return button, disables the confirm/next button with text "Suivant".
+        /// - In ISCORRECTION state: 
+        ///     - Checks if the current answer is valid (diagnostic or action).
+        ///     - If valid, enables confirm/next button and disables return button, setting confirm button text to "Suivant".
+        ///     - If not valid, disables confirm/next button and enables return button.
+        /// </summary>
         private void SetTextButtonsNavigation()
         {
             TextMeshProUGUI confirmeNextText = confirmNextButton.GetComponentInChildren<TextMeshProUGUI>();
@@ -217,6 +240,14 @@ namespace Assets.Scripts.Managers
             }
         }
 
+        /// <summary>
+        /// Sets up the current response buttons based on the patient's current step data.
+        /// - If the step has a diagnostic phase and the diagnostic answer is not yet valid,
+        ///   it sets the answer state to DIAGNOSTIC and creates the corresponding answer buttons.
+        /// - If the diagnostic phase is already valid, it marks diagnostic as valid.
+        /// - If the step has an action phase and the diagnostic phase is valid,
+        ///   it sets the answer state to ACTION and creates the corresponding action answer buttons.
+        /// </summary>
         private void SetResponses()
         {
             if (patientData.steps[_indexStep].hasDiagnosticPhase && !_isDiagnosticValid)
@@ -236,6 +267,15 @@ namespace Assets.Scripts.Managers
             }
         }
 
+        /// <summary>
+        /// Clears existing answer buttons and creates new ones based on the provided phase data.
+        /// For each answer in the phase data (up to the number of available buttons):
+        /// - Sets the button text to the answer's text.
+        /// - Resets the button state.
+        /// - Adds a click listener that triggers OnAnswerCorrect with the corresponding answer index.
+        /// - Enables and makes the button visible.
+        /// </summary>
+        /// <param name="phaseData">Data containing the possible answers for the current phase.</param>
         private void CreateAnwserButtons(PhaseData phaseData)
         {
             ClearQuestion();
@@ -256,6 +296,12 @@ namespace Assets.Scripts.Managers
             }
         }
 
+        /// <summary>
+        /// Switches the UI to the question answering display.
+        /// Sets the interaction state to answering,
+        /// clears all current displays, activates the question display,
+        /// sets up the possible responses, and updates the navigation buttons.
+        /// </summary>
         private void GoToQuestionDisplay()
         {
             interactionState = InteractionState.ISANSWERING;
@@ -265,6 +311,11 @@ namespace Assets.Scripts.Managers
             SetTextButtonsNavigation();
         }
 
+        /// <summary>
+        /// Returns from the correction state back to the question answering display,
+        /// clearing all displays and resetting the interaction state and buttons accordingly.
+        /// Only works if currently in the correction state.
+        /// </summary>
         private void BackToQuestion()
         {
             if (interactionState == InteractionState.ISCORRECTION)
@@ -277,6 +328,12 @@ namespace Assets.Scripts.Managers
             }
         }
 
+
+        /// <summary>
+        /// Returns from the answering state back to the document (reading) display,
+        /// clearing all displays and resetting interaction state and navigation buttons.
+        /// Only works if currently in the answering state.
+        /// </summary>
         private void BackToDocument()
         {
             if (interactionState == InteractionState.ISANSWERING)
@@ -289,6 +346,11 @@ namespace Assets.Scripts.Managers
             }
         }
 
+        /// <summary>
+        /// Deactivates all UI displays including the general display list,
+        /// the question display, and the correction display.
+        /// Used to reset the UI before showing new content.
+        /// </summary>
         private void ClearAllDisplay()
         {
             
@@ -301,6 +363,10 @@ namespace Assets.Scripts.Managers
             correctionDisplay.SetActive(false);
         }
 
+        /// <summary>
+        /// Deactivates all answer choice buttons.
+        /// Clears the current question’s answer options from the UI.
+        /// </summary>
         private void ClearQuestion()
         {
             for (int i = 0; i < choiceButtons.Length; i++)
@@ -309,6 +375,14 @@ namespace Assets.Scripts.Managers
             }
         }
 
+        /// <summary>
+        /// Handles the logic when the player selects an answer button.
+        /// Checks if the selected answer is correct and updates the state accordingly.
+        /// Provides feedback by marking incorrect answers and displaying messages.
+        /// Records the answer in the game data for persistence.
+        /// </summary>
+        /// <param name="phaseData">The phase data containing possible answers.</param>
+        /// <param name="index">The index of the selected answer button.</param>
         private void OnAnswerCorrect(PhaseData phaseData, int index)
         {
             bool isCorrect = false;
@@ -341,6 +415,12 @@ namespace Assets.Scripts.Managers
             ShowAnswerDetail(phaseData.answerData[index], feedBackText, isCorrect);
         }
 
+        /// <summary>
+        /// Checks if the answer at the specified index in the answer list is correct.
+        /// </summary>
+        /// <param name="answerData">List of possible answers.</param>
+        /// <param name="index">Index of the selected answer.</param>
+        /// <returns>True if the answer is correct; otherwise, false.</returns>
         private static bool IsAnswerCorrect(List<AnswerData> answerData, int index)
         {
             if (index < 0 || index >= answerData.Count)
@@ -351,6 +431,14 @@ namespace Assets.Scripts.Managers
             return answerData[index].isCorrect;
         }
 
+        /// <summary>
+        /// Displays detailed feedback for the selected answer, including text, justification, 
+        /// related images, and visual cues indicating whether the answer was correct or incorrect.
+        /// Also updates UI states and navigation buttons accordingly.
+        /// </summary>
+        /// <param name="answer">The answer data containing text, correction, and images.</param>
+        /// <param name="feedBackText">Feedback message to display ("Correct!" or "Incorrect!").</param>
+        /// <param name="anwserCorrect">Indicates if the selected answer was correct.</param>
         private void ShowAnswerDetail(AnswerData answer, string feedBackText, bool anwserCorrect)
         {
             interactionState = InteractionState.ISCORRECTION;
@@ -401,6 +489,10 @@ namespace Assets.Scripts.Managers
             SetTextButtonsNavigation();
         }
 
+        /// <summary>
+        /// Advances the game to the next step if the current step's diagnostic and action phases are completed.
+        /// If the current step is marked as terminating, it triggers saving and displaying the player's scores.
+        /// </summary>
         private void GoToNextStep()
         {
             // Control if dignostic & action is completed
@@ -419,6 +511,12 @@ namespace Assets.Scripts.Managers
             }   
         }
 
+
+        /// <summary>
+        /// Checks whether the current step's diagnostic and action phases are completed and valid.
+        /// </summary>
+        /// <param name="step">The current AlgoStep to check.</param>
+        /// <returns>True if the step is completed, false otherwise.</returns>
         private bool IsStepCompleted(AlgoStep step)
         {
             bool diagnoticOK = !step.hasDiagnosticPhase || _isDiagnosticValid;
@@ -426,6 +524,13 @@ namespace Assets.Scripts.Managers
             return diagnoticOK && _isActionValid;
         }
 
+        /// <summary>
+        /// Initializes component references by searching through the displayList GameObjects,
+        /// safely assigning components if they exist without causing errors.
+        ///
+        /// Also sets up button listeners for navigation and interaction,
+        /// and initializes a dictionary mapping each Step enum to its corresponding display index.
+        /// </summary>
         private void Awake()
         {
 

@@ -160,7 +160,7 @@ namespace Assets.Scripts.Managers
         
         private void EnableTutorial()
         {
-            if (Instance.GameData.FisrtGameSession()) _isTutoriaActive.SetActive(true); 
+            if (Instance.GameData.FirstGameSession()) _isTutoriaActive.SetActive(true); 
         }
 
         // SAVE BOUGHT ITEM IN PLAYERPREFS

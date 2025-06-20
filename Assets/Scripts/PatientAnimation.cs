@@ -98,6 +98,11 @@ namespace Assets.Scripts
             imageCharacter.sizeDelta = new Vector2(newSprite.rect.width, newSprite.rect.height);
         }
 
+        /// <summary>
+        /// Sets the sprite image for the character and adjusts the image size to match the sprite's dimensions.
+        /// Logs an error if the sprite library is not initialized.
+        /// </summary>
+        /// <param name="characterSprite">The sprite to display for the character.</param>
         private void SetSprite(Sprite characterSprite)
         {
             if (characterSprites == null)

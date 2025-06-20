@@ -14,6 +14,11 @@ namespace Assets.Scripts
 
         private Button _button;
 
+        /// <summary>
+        /// Initializes the component by setting the price text display,
+        /// retrieving the Button component attached to the game object,
+        /// and adding the Buy method as a click event listener for the button.
+        /// </summary>
         void Start()
         {
             _priceText.text = _price.ToString();
@@ -21,6 +26,11 @@ namespace Assets.Scripts
             _button.onClick.AddListener(Buy);
         }
 
+        /// <summary>
+        /// Handles the purchase of an item if the player has enough money.
+        /// Deducts the item's price from the player's money, activates the item,
+        /// records the purchase, disables the purchase button, and plays a sound effect.
+        /// </summary>
         public void Buy()
         {
             if (GameManager.Instance.Money >= _price)

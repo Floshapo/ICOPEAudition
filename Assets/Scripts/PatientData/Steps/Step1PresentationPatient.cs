@@ -34,7 +34,7 @@ namespace Assets.Scripts.PatientData.Steps
         {
             // Set profil data
             nameFields.text = patientData.surname;
-            surnameFields.text = patientData.fisrtName;
+            surnameFields.text = patientData.firstName;
             ageFields.text = patientData.age.ToString();
             situationFields.text = patientData.familySituation;
             activitiesFields.text = patientData.occupationalActivities;

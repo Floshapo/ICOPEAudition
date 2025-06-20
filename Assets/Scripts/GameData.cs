@@ -10,7 +10,8 @@ namespace Assets.Scripts
 {    
     public class GameData : MonoBehaviour
     {
-        // RECORDS OF CURRENT STEPS OF ALGO - DATA TO SHOW IN STEP SELECTOR OR STORE
+        // RECORDS OF CURRENT STEPS OF ALGO - DATA TO SHOW IN STEP SELECTOR OR STORE.
+        // To replace this struct with a class to ensure better data persistence.
         public struct StepRecords
         {           
             public int diagnoticsAttempt;
@@ -30,6 +31,7 @@ namespace Assets.Scripts
         }
 
         // RECORD OF CURRENT LEVEL - DATA TO SHOW IN LEVEL SELECTOR OR STORE
+        //To replace this struct with a class to ensure better data persistence.
         public struct PatientCaseRecords
         {
             // TOT Data on the current patient
@@ -76,7 +78,9 @@ namespace Assets.Scripts
                 this.stepRecords = stepRecords;
             }
         }
-
+        
+        // LEVEL RECORDS
+        //To replace this struct with a class to ensure better data persistence.
         public struct LevelRecords
         {
             public int levelNbAttempt;
@@ -93,6 +97,7 @@ namespace Assets.Scripts
         }
 
         // GLOBAL RECORDS
+        // To replace this struct with a class to ensure better data persistence.
         public struct MainData
         {
             public int totGames; // Number of games played
@@ -436,10 +441,11 @@ namespace Assets.Scripts
 
             _MainData.levelRecords = _levelRecords;
 
+            // To change for server request 
             // XmlManager.SaveToXml(_MainData, Path.Combine(Application.streamingAssetsPath, path), "GameData");
         }
 
-        public bool FisrtGameSession()
+        public bool FirstGameSession()
         {
             return _MainData.nbGameSession == 0;
         }
@@ -475,6 +481,7 @@ namespace Assets.Scripts
             InitializeRecords();
             path = Path.Combine(Application.streamingAssetsPath, path);
             // try to get last session time on web request
+            // To change for server request 
             /*if (File.Exists(path))
             {
                 

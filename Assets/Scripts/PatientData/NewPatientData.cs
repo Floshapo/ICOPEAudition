@@ -10,7 +10,7 @@ namespace Assets.Scripts.PatientData
         [Header("Profil")]
         public Sprite[] characterSprites;
         public string surname;
-        public string fisrtName;
+        public string firstName;
         public int age;
 
         [Header("Family Situation")]
