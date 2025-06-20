@@ -21,7 +21,7 @@ namespace Assets.Scripts.UI.TutorialContents
 
         #region Public methods
         /// <summary>
-        /// Change indexText value for loading next text.
+        /// Advances to the next tutorial text by incrementing the index and loading the corresponding text.
         /// </summary>
         public void NextTextButton()
         {
@@ -32,16 +32,16 @@ namespace Assets.Scripts.UI.TutorialContents
 
         #region Private methods
         /// <summary>
-        /// Set text with the xml information.
+        /// Sets the UI text fields based on XML tutorial data.
         /// </summary>
         /// <remarks>
-        /// Set text for an intitule and Text (dialogue).
+        /// Loads a tutorial entry by its step name and text ID, then updates UI elements with the entry's title and text.
+        /// If no entry is found, resets the tutorial UI and index.
         /// </remarks>
-        /// <param name="nameStep">The name of the current state for the XML file.</param>
-        /// <param name="idSteps">The ids of the current text to load.</param>
+        /// <param name="nameStep">The name of the current tutorial step (used to locate data in the XML).</param>
+        /// <param name="idSteps">The ID of the specific text entry to load.</param>
         private void SetTexts(string nameStep, int idSteps)
         {
-            Debug.Log("Here");
             var pathToXml = Resources.Load<TextAsset>($"Data/Tutorial");
             if ( pathToXml != null )
             {
@@ -60,7 +60,8 @@ namespace Assets.Scripts.UI.TutorialContents
         }
 
         /// <summary>
-        /// Check if input button like mouse click (Fire1) and keyboard (enter) is hit and call fuction "nextTextButton".
+        /// Checks for input from mouse click ("Fire1") or keyboard (Enter key).
+        /// If input is detected, triggers the NextTextButton() method.
         /// </summary>
         private void GetInputs()
         {
@@ -72,12 +73,20 @@ namespace Assets.Scripts.UI.TutorialContents
         #endregion
 
         #region Unity method
+        /// <summary>
+        /// Called when the object becomes enabled and active.
+        /// Initializes the tutorial step name and sets related texts.
+        /// </summary>
         private void OnEnable()
         {
             nameStep = "Waiting_room"; 
             SetTexts(nameStep, indexText);
         }
 
+        /// <summary>
+        /// Called once per frame.
+        /// If the tutorial panel is active, it processes user input.
+        /// </summary>
         private void Update()
         {
             if (GameManager.Instance._tutorialPanel.activeSelf) GetInputs();
