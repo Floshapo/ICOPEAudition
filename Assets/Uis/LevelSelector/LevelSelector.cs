@@ -83,12 +83,9 @@ public class LevelSelector : MonoBehaviour
 
     private void ShowPatientButtons(int nbPatient)
     {
-        // instatiate missing buttons
-
         int currentPatient = GameManager.Instance.GameStateManager.GetCurrentPatientCase();
 
         // Get nb patient case
-
         if (patientButtonsContainer.transform.childCount < nbPatient)
         {
             int childNumb = patientButtonsContainer.transform.childCount;
@@ -112,7 +109,6 @@ public class LevelSelector : MonoBehaviour
                 if (bindex > currentPatient) patientButtonsContainer.transform.GetChild(bindex).GetComponent<ButtonPressDetector>().AssignState(ButtonPressDetector.ButtonState.Disable);
                 else patientButtonsContainer.transform.GetChild(bindex).GetComponent<ButtonPressDetector>().AssignState(ButtonPressDetector.ButtonState.None, true);
             }
-            else patientButtonsContainer.transform.GetChild(bindex).gameObject.SetActive(false);
         }
     }
 

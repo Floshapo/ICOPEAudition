@@ -984,7 +984,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7180636618873436960}
   m_HandleRect: {fileID: 3486355540631044576}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -2204,8 +2204,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 2160642248
+  m_fontColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

@@ -16,7 +16,7 @@ MonoBehaviour:
   - {fileID: 7102689100218679052, guid: 92b06a55c6e292f449725a0c8c5901c8, type: 3}
   - {fileID: 6823558343195017428, guid: 92b06a55c6e292f449725a0c8c5901c8, type: 3}
   surname: Durand
-  fisrtName: Jeanne
+  firstName: Jeanne
   age: 72
   familySituation: "Ancienne professeure de tango \xE0 la retraite."
   occupationalActivities: Elle continue la danse lors de bals.

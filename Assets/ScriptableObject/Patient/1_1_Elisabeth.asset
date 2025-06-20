@@ -16,7 +16,7 @@ MonoBehaviour:
   - {fileID: 2388940582529952283, guid: 222169cef653a4741a9a0e05a7267da0, type: 3}
   - {fileID: -759232035500662259, guid: 222169cef653a4741a9a0e05a7267da0, type: 3}
   surname: Martin
-  fisrtName: Elisabeth
+  firstName: Elisabeth
   age: 67
   familySituation: Ancienne professeure de lettre.
   occupationalActivities: Elle organise un club de lecture.
