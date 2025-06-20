@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts.PatientData.Steps
 {
+    /// <summary>
+    /// Manages the display of questionnaire questions and patient answers, along with patient sprite.
+    /// </summary>
     public class Step3And4Questionnary : MonoBehaviour
     {
         // Content GameObject
@@ -13,6 +16,11 @@ namespace Assets.Scripts.PatientData.Steps
         [SerializeField] private GameObject content;
         [SerializeField] private Image patientSprite;
 
+        /// <summary>
+        /// Sets the questionnaire questions and corresponding patient answers into the UI.
+        /// </summary>
+        /// <param name="questions">List of questions to display.</param>
+        /// <param name="answers">List of patient answers corresponding to questions.</param>
         public void SetQuestionayText(List<QuestionData> questions,List<PatientQuestionAnswer> answers)
         {
             // Set text in children
@@ -26,6 +34,9 @@ namespace Assets.Scripts.PatientData.Steps
             }
         }
 
+        /// <summary>
+        /// Sets the patient's sprite in the UI.
+        /// </summary>
         public void SetPatientSprite(Sprite sprite)
         {
             patientSprite.sprite = sprite;

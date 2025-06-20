@@ -4,6 +4,9 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts.PatientData.Steps
 {
+    /// <summary>
+    /// Manages the UI presentation of patient data in Step 1 of the algorithm.
+    /// </summary>
     public class Step1PresentationPatient : MonoBehaviour
     {
         [Header("Sprites")]
@@ -30,6 +33,10 @@ namespace Assets.Scripts.PatientData.Steps
         [Header("Medical history field")]
         [SerializeField] private TextMeshProUGUI historyField;
 
+        /// <summary>
+        /// Populates UI text fields with patient data.
+        /// </summary>
+        /// <param name="patientData">Data about the patient to display.</param>
         public void SetPresentationTexts(NewPatientData patientData)
         {
             // Set profil data
@@ -50,6 +57,10 @@ namespace Assets.Scripts.PatientData.Steps
             historyField.text = patientData.medicalHistory;
         }
 
+        /// <summary>
+        /// Sets and adjusts the patient's sprite image.
+        /// </summary>
+        /// <param name="patient">The sprite representing the patient.</param>
         public void SetSprites(Sprite patient)
         {
             patientSprite.sprite = patient;

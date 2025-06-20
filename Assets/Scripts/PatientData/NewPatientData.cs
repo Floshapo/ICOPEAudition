@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace Assets.Scripts.PatientData
 {
+    /// <summary>
+    /// ScriptableObject representing detailed patient data for medical scenarios.
+    /// </summary>
     [CreateAssetMenu(fileName = "NewPatientData", menuName = "Medical/Patient")]
     public class NewPatientData : ScriptableObject
     {
@@ -37,6 +40,9 @@ namespace Assets.Scripts.PatientData
 
     }
 
+    /// <summary>
+    /// Simple name-value pair structure.
+    /// </summary>
     [System.Serializable]
     public class NamedValue
     {
