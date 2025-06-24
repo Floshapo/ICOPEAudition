@@ -16,17 +16,16 @@ namespace Assets.Scripts.PatientData
         public string firstName;
         public int age;
 
-        [Header("Family Situation")]
+        [Header("Fiche patient")]
+        [TextArea]
         public string familySituation;
 
-        [Header("Occupational Activities")]
+        [TextArea]
         public string occupationalActivities;
 
-        [Header("Context")]
         [TextArea]
         public string context;
 
-        [Header("Autonomies")]
         public List<NamedValue> autonomies;
 
         [Header("Medical History")]
